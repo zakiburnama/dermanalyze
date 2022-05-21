@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dermanalyze</string>
+    <string name="app_name">DERMANALYZE</string>
     <string name="app_name_desc">Analyze your skin</string>
 
     <string name="title_home">Home</string>
@@ -34,5 +34,25 @@
     <string name="login">Login</string>
     <string name="maps">Maps</string>
     <string name="history">History</string>
+    <string name="title_articles">Title Article</string>
+    <string name="readmore">readmore</string>
 
+    <string-array name="data_title">
+        <item>Bisakah Kanker kulit disembuhkan?</item>
+        <item>Apa itu Kanker Kulit?</item>
+        <item>Bisakah kanker Kulit disembuhkan?</item>
+        <item>Bagaimana cara mengetahui Skin Cancer?</item>
+    </string-array>
+    <string-array name="readmore">
+        <item>Readmore</item>
+        <item>Readmore</item>
+        <item>Readmore</item>
+        <item>Readmore</item>
+    </string-array>
+    <integer-array name="data_photo">
+        <item>@drawable/article1</item>
+        <item>@drawable/article2</item>
+        <item>@drawable/article3</item>
+        <item>@drawable/article4</item>
+    </integer-array>
 </resources>
