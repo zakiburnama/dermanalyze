@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/image_kurikulum_global"
+        android:src="@drawable/intro1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +51,7 @@
         android:id="@+id/logoMenu2"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/image_belajar_fleksibel"
+        android:src="@drawable/intro2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -90,7 +90,7 @@
         android:id="@+id/logoMenu3"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:src="@drawable/image_code_review"
+        android:src="@drawable/intro3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -226,7 +226,7 @@
         android:layout_marginBottom="32dp"
         android:alpha="0"
         android:backgroundTint="@color/navi"
-        android:text="@string/learn_now"
+        android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/menu2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -235,10 +235,11 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image_dicoding" />
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

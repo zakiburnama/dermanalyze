@@ -6,27 +6,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.dermanalyze_bangkit_capstone.databinding.ActivityIntroBinding
+import com.example.dermanalyze_bangkit_capstone.databinding.ActivityLoginBinding
 
+class LoginActivity : AppCompatActivity() {
 
-class IntroActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityIntroBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_intro)
-        binding = ActivityIntroBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupView()
 
-        val intent = Intent(this, LoginActivity::class.java)
 
-        binding.button.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        binding.tvRegiter.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
     }
 
