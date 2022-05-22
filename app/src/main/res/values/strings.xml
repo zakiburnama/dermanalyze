@@ -36,6 +36,7 @@
     <string name="history">History</string>
     <string name="title_articles">Title Article</string>
     <string name="readmore">readmore</string>
+    <string name="register">Register</string>
 
     <string-array name="data_title">
         <item>Bisakah Kanker kulit disembuhkan?</item>

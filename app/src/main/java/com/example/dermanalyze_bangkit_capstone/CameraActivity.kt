@@ -31,28 +31,28 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        cameraExecutor = Executors.newSingleThreadExecutor()
-//
+        cameraExecutor = Executors.newSingleThreadExecutor()
+
 //        binding.captureImage.setOnClickListener { takePhoto() }
-//        binding.switchCamera.setOnClickListener {
-//            cameraSelector =
-//                if (cameraSelector.equals(CameraSelector.DEFAULT_BACK_CAMERA)) CameraSelector.DEFAULT_FRONT_CAMERA
-//                else CameraSelector.DEFAULT_BACK_CAMERA
-//            startCamera()
-//        }
+        binding.switchCamera.setOnClickListener {
+            cameraSelector =
+                if (cameraSelector.equals(CameraSelector.DEFAULT_BACK_CAMERA)) CameraSelector.DEFAULT_FRONT_CAMERA
+                else CameraSelector.DEFAULT_BACK_CAMERA
+            startCamera()
+        }
     }
 
-//    public override fun onResume() {
-//        super.onResume()
-//        hideSystemUI()
-//        startCamera()
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        cameraExecutor.shutdown()
-//    }
-//
+    public override fun onResume() {
+        super.onResume()
+        hideSystemUI()
+        startCamera()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
+    }
+
 //    private fun takePhoto() {
 //        val imageCapture = imageCapture ?: return
 //
@@ -84,50 +84,50 @@ class CameraActivity : AppCompatActivity() {
 //            }
 //        )
 //    }
-//
-//    private fun startCamera() {
-//
-//        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-//
-//        cameraProviderFuture.addListener({
-//            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-//            val preview = Preview.Builder()
-//                .build()
-//                .also {
-//                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-//                }
-//
-//            imageCapture = ImageCapture.Builder().build()
-//
-//            try {
-//                cameraProvider.unbindAll()
-//                cameraProvider.bindToLifecycle(
-//                    this,
-//                    cameraSelector,
-//                    preview,
-//                    imageCapture
-//                )
-//
-//            } catch (exc: Exception) {
-//                Toast.makeText(
-//                    this@CameraActivity,
-//                    "Gagal memunculkan kamera.",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//        }, ContextCompat.getMainExecutor(this))
-//    }
-//
-//    private fun hideSystemUI() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.hide()
-//    }
+
+    private fun startCamera() {
+
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            val preview = Preview.Builder()
+                .build()
+                .also {
+                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+                }
+
+            imageCapture = ImageCapture.Builder().build()
+
+            try {
+                cameraProvider.unbindAll()
+                cameraProvider.bindToLifecycle(
+                    this,
+                    cameraSelector,
+                    preview,
+                    imageCapture
+                )
+
+            } catch (exc: Exception) {
+                Toast.makeText(
+                    this@CameraActivity,
+                    "Gagal memunculkan kamera.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun hideSystemUI() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+        supportActionBar?.hide()
+    }
 }
