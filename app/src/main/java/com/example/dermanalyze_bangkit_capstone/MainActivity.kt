@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupView()
+        supportActionBar?.hide()
 
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration.Builder(
@@ -66,19 +66,6 @@ class MainActivity : AppCompatActivity() {
                 REQUEST_CODE_PERMISSIONS
             )
         }
-    }
-
-    private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-        supportActionBar?.hide()
     }
 
     companion object {

@@ -7,20 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.dermanalyze_bangkit_capstone.ui.home.HomeFragment"
+        android:name="com.example.dermanalyze_bangkit_capstone.MainFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_maps"
-        android:name="com.example.dermanalyze_bangkit_capstone.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:name="com.example.dermanalyze_bangkit_capstone.MapsFragment"
+        android:label="@string/title_maps"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.dermanalyze_bangkit_capstone.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_history"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
@@ -32,6 +32,6 @@
     <activity
         android:id="@+id/navigation_camera"
         android:name="com.example.dermanalyze_bangkit_capstone.CameraActivity"
-        android:label="@string/title_profile"
+        android:label="@string/title_camera"
         tools:layout="@layout/fragment_profile" />
 </navigation>
