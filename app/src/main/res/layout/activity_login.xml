@@ -76,4 +76,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Email"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Password"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
