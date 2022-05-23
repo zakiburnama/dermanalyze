@@ -32,8 +32,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="logo">LOGO</string>
     <string name="login">Login</string>
-    <string name="maps">Maps</string>
-    <string name="history">History</string>
     <string name="title_articles">Title Article</string>
     <string name="readmore">readmore</string>
     <string name="register">Register</string>

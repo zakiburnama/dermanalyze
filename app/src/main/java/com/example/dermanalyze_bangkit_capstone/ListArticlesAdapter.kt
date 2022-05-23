@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ListArticlesAdapter (private val listHero: ArrayList<Articles>) : RecyclerView.Adapter<ListArticlesAdapter.ListViewHolder>() {
+class ListArticlesAdapter (private val listArticles: ArrayList<Articles>) : RecyclerView.Adapter<ListArticlesAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_articles, parent, false)
@@ -15,13 +15,13 @@ class ListArticlesAdapter (private val listHero: ArrayList<Articles>) : Recycler
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listHero[position]
+        val (name, description, photo) = listArticles[position]
         holder.imgPhoto.setImageResource(photo)
         holder.tvtitleArticles.text = name
         holder.tvreadmore.text = description
     }
 
-    override fun getItemCount(): Int = listHero.size
+    override fun getItemCount(): Int = listArticles.size
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
