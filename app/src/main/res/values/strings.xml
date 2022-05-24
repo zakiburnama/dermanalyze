@@ -12,13 +12,13 @@
     <string name="title_activity_main2">MainActivity2</string>
 
 
-    <string name="title_menu_1">Kurikulum Standar Industri Global</string>
-    <string name="title_menu_2">Belajar Fleksibel Sesuai Jadwal Anda</string>
-    <string name="title_menu_3">Code Review dari Developer Expert</string>
+    <string name="title_menu_1">Scan For Skin Cancer Easily</string>
+    <string name="title_menu_2">Get Informations About Skin Cancer</string>
+    <string name="title_menu_3">Get Hospital Locations For Skin Cancer</string>
     <string name="title_menu_4">Alumni Terpercaya di Berbagai Perusahaan</string>
-    <string name="desc_menu_1">Kurikulum dikembangkan bersama perusahaan dan pemilik teknologi dunia sesuai kebutuhan industri terkini.</string>
-    <string name="desc_menu_2">Belajar kapan pun, di mana pun, secara mandiri. Bebas memilih kelas sesuai minat belajar. Akses seumur hidup ke kelas dan forum diskusi setelah lulus.</string>
-    <string name="desc_menu_3">Validasi skill Anda melalui 1-on-1 Professional Code Review yang diberikan langsung oleh Developer Expert.</string>
+    <string name="desc_menu_1">fast detection, speedy recovery</string>
+    <string name="desc_menu_2">find information about your skin faster</string>
+    <string name="desc_menu_3">find the nearest hospital for your skin health</string>
     <string name="desc_menu_4">Sertifikat yang membuktikan pengetahuan fundamental beserta keterampilan nyata yang diinginkan perusahaan global.</string>
     <string name="learn_now">Belajar Sekarang</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -33,7 +33,7 @@
     <string name="logo">LOGO</string>
     <string name="login">Login</string>
     <string name="title_articles">Title Article</string>
-    <string name="readmore">readmore</string>
+    <string name="readmore">readmore-></string>
     <string name="register">Register</string>
 
     <string-array name="data_title">
@@ -43,10 +43,10 @@
         <item>Bagaimana cara mengetahui Skin Cancer?</item>
     </string-array>
     <string-array name="readmore">
-        <item>Readmore</item>
-        <item>Readmore</item>
-        <item>Readmore</item>
-        <item>Readmore</item>
+        <item>Readmore-></item>
+        <item>Readmore-></item>
+        <item>Readmore-></item>
+        <item>Readmore-></item>
     </string-array>
     <integer-array name="data_photo">
         <item>@drawable/article1</item>
