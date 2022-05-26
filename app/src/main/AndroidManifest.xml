@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.dermanalyze_bangkit_capstone">
 
     <uses-feature android:name="android.hardware.camera" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -26,7 +26,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDDemjDYWCfASS-K1jHRXkrLd6RyaB7BJk" />
+            android:value="AIzaSyC-d-8-pN-Unhm9Krds2HIQJK5mHNTUvDc" />
 
         <activity
             android:name=".ScanActivity"

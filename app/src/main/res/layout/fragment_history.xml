@@ -5,15 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".HistoryFragment">
 
-    <TextView
-        android:id="@+id/text_history"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="This is histiry fragment"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_row_articles"/>
 
 </FrameLayout>
