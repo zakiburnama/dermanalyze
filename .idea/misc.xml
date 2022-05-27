@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/activity_camera.xml" value="0.1802536231884058" />
+        <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/activity_intro.xml" value="0.1334853090172239" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/activity_main.xml" value="0.1634963768115942" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/activity_register.xml" value="0.264" />
@@ -12,9 +13,10 @@
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_dashboard.xml" value="0.1802536231884058" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_history.xml" value="0.25407608695652173" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_home.xml" value="0.1802536231884058" />
-        <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_main.xml" value="0.25407608695652173" />
+        <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_main.xml" value="0.264" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_maps.xml" value="0.25407608695652173" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/layout/item_row_articles.xml" value="0.1802536231884058" />
         <entry key="..\:/Project_Coding/Android_Studio/BangkitProjek/dermanalyzebangkitcapstone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27447916666666666" />
       </map>
     </option>

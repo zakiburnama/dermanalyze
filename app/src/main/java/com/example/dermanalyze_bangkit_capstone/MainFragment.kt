@@ -50,6 +50,7 @@ class MainFragment : Fragment() {
 
         rvArticles = view.findViewById(R.id.rv_articles)
         rvArticles.setHasFixedSize(true)
+        list.clear()
         list.addAll(listArticles)
         showRecyclerList()
 
@@ -75,6 +76,12 @@ class MainFragment : Fragment() {
         rvArticles.layoutManager = LinearLayoutManager(activity)
         val listArticlesAdapter = ListArticlesAdapter(list)
         rvArticles.adapter = listArticlesAdapter
+
+//        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
+//            override fun onItemClicked() {
+////                moveActivity(data)
+//            }
+//        })
     }
 
     companion object {

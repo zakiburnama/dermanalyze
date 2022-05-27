@@ -15,11 +15,11 @@
     <string name="title_menu_1">Scan For Skin Cancer Easily</string>
     <string name="title_menu_2">Get Informations About Skin Cancer</string>
     <string name="title_menu_3">Get Hospital Locations For Skin Cancer</string>
-    <string name="title_menu_4">Alumni Terpercaya di Berbagai Perusahaan</string>
+    <string name="title_menu_4">######</string>
     <string name="desc_menu_1">fast detection, speedy recovery</string>
     <string name="desc_menu_2">find information about your skin faster</string>
     <string name="desc_menu_3">find the nearest hospital for your skin health</string>
-    <string name="desc_menu_4">Sertifikat yang membuktikan pengetahuan fundamental beserta keterampilan nyata yang diinginkan perusahaan global.</string>
+    <string name="desc_menu_4">#######</string>
     <string name="learn_now">Belajar Sekarang</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
