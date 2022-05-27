@@ -10,5 +10,5 @@
 - Mohamad Ichsan Wibawa (C2441W3038) - Cloud Computing - Universitas Islam Negeri Maulana Malik Ibrahim Malang
 
 # Project link
-*[Github CC](https://github.com/dha-lang/dermanalyze-api)
-*[Github ML]() 
+* [Github CC](https://github.com/dha-lang/dermanalyze-api)
+* [Github ML]() 
