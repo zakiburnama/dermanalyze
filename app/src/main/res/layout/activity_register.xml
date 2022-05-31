@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -31,13 +29,13 @@
         app:srcCompat="@drawable/hiasanlogo2" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/et_firstnameregis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:autofillHints="Email..."
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:hint="firstname.."
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,45 +43,45 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/et_lastnameregis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="Password..."
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="lastname.."
+        android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/et_firstnameregis"
+        app:layout_constraintStart_toStartOf="@+id/et_firstnameregis"
+        app:layout_constraintTop_toBottomOf="@+id/et_firstnameregis"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/et_emailregis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="Password..."
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="email.."
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/et_lastnameregis"
+        app:layout_constraintStart_toStartOf="@+id/et_lastnameregis"
+        app:layout_constraintTop_toBottomOf="@+id/et_lastnameregis"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/et_passwordregis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="Password..."
         android:ems="10"
+        android:hint="password.."
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
+        app:layout_constraintEnd_toEndOf="@+id/et_emailregis"
+        app:layout_constraintStart_toStartOf="@+id/et_emailregis"
+        app:layout_constraintTop_toBottomOf="@+id/et_emailregis"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -92,12 +90,12 @@
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintEnd_toEndOf="@+id/et_passwordregis"
+        app:layout_constraintStart_toStartOf="@+id/et_passwordregis"
+        app:layout_constraintTop_toBottomOf="@+id/et_passwordregis" />
 
     <TextView
-        android:id="@+id/tv_regiter"
+        android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sudah punya akun?"
@@ -106,54 +104,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_regiter" />
 
-    <EditText
-        android:id="@+id/UsernameLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Username"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
-
-    <EditText
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword2" />
-
-    <EditText
-        android:id="@+id/RePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Re-Password"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword3"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword3" />
 
     <TextView
         android:id="@+id/DERMANALYZE"
@@ -165,7 +115,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/et_firstnameregis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
