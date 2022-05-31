@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="18dp">
@@ -114,36 +115,19 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="18dp"
-            android:text="Button" />
+            android:text="Update" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Logout" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
