@@ -12,3 +12,4 @@
 # Project link
 * [Github CC](https://github.com/dha-lang/dermanalyze-api)
 * [Github ML](https://github.com/auliaaepa/Dermanalyze-ML) 
+* [Figma Design](https://www.figma.com/file/G5GIvFFwimD7WChTruqgDD/Dermanalyze?node-id=0%3A1)
