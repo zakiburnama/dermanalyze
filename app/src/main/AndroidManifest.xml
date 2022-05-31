@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/dermanalyze_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dermanalyzebangkitcapstone">
-
+        <activity android:name=".UpdateActivity" android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
