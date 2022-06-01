@@ -48,6 +48,10 @@ data class Register(
 //    @SerializedName("created_at") val created_at: String?
 )
 
+data class Update(
+    val first_name: String,
+    val last_name: String,
+)
 data class RegisterResponse(
     @field:SerializedName("id") val id: Int?,
     @field:SerializedName("first_name") val first_name: String,
@@ -126,6 +130,17 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("users")
     fun register(@Body userData: Register): Call<RegisterResponse>
+
+    @Headers("Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNjU0MDc4MTg2fQ.a6oI1om3SC0e2Ag-m4Um6HxLwEFWNW-nh83YHklYovU")
+    @GET("users")
+    fun getUser(): Call<UserResponse>
+
+//    @FormUrlEncoded
+    @Headers("Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNjU0MDc4MTg2fQ.a6oI1om3SC0e2Ag-m4Um6HxLwEFWNW-nh83YHklYovU")
+    @PUT("users")
+    fun updateUser(
+        @Body userData: Update
+    ):Call<UserResponse>
 
 //    @FormUrlEncoded
 //    @POST("login")
