@@ -17,7 +17,15 @@ class SplashscreenActivity : AppCompatActivity() {
 
         setupView()
 
-        val intent = Intent(this, LoginActivity::class.java)
+        val loginPreference = LoginPreference(this)
+        val isLogin = loginPreference.getIsLogin()
+        val intent:Intent = if (isLogin) {
+            Intent(this, MainActivity::class.java)
+        }else {
+            Intent(this, IntroActivity::class.java)
+        }
+
+//        val intent = Intent(this, MainActivity::class.java)
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(intent)

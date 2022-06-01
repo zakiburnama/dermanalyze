@@ -19,78 +19,59 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupView()
 
-        val valueregis = Register(
-//            id = null,
-            first_name = "budi",
-            last_name = "badu",
-            email = "budi@gmail.com",
-            password = "budi123",
-//            created_at = null,
-        )
-
         binding.btnRegiter.setOnClickListener {
-
-
-            Log.i("TAG", "##### btn ditekan")
-
-            val client = ApiConfig().getApiService().register(valueregis)
-            client.enqueue(object : Callback<RegisterResponse> {
-                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-//                    showLoading(false)
-                    Log.i("TAG", "##### sukses")
-
-                    val responseBody = response.body()
-                    if (response.isSuccessful && responseBody != null) {
-
-//                        val token = responseBody.access_token
-//                        val token = responseBody.access_token
-
-                        val x = responseBody.first_name
-
-
-                        Log.i("TAG", "##### $x")
-//                        Log.i("TAG", "##### $token")
-//                        Log.i("TAG", "##### $token")
-//                        val isLogin = true
-//
-//                        saveUser(token, isLogin)
-
-//                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-//                        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
-//                        finishAfterTransition()
-
-
-                    } else {
-                        Toast.makeText(this@RegisterActivity,response.message(),Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-//                    showLoading(false)
-                    Log.i("TAG", "##### gagal $t")
-                    Toast.makeText(this@RegisterActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            register()
         }
-
-
 
         binding.tvLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun register() {
+        val firstname = binding.etFirstnameregis.text.toString().trim()
+        val lastname = binding.etLastnameregis.text.toString().trim()
+        val email = binding.etEmailregis.text.toString().trim()
+        val password = binding.etPasswordregis.text.toString().trim()
+
+        val valueregis = Register(
+            first_name = firstname,
+            last_name = lastname,
+            email = email,
+            password = password
+        )
+
+        val client = ApiConfig().getApiService().register(valueregis)
+        client.enqueue(object : Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>)
+            {
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    moveActivity()
+                } else {
+                    Toast.makeText(this@RegisterActivity,response.message(),Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+//                    showLoading(false)
+                Toast.makeText(this@RegisterActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun moveActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupView() {

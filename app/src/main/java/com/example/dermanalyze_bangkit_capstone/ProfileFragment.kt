@@ -2,35 +2,88 @@ package com.example.dermanalyze_bangkit_capstone
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.dermanalyze_bangkit_capstone.databinding.FragmentProfileBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProfileFragment : Fragment(){
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        val loginPreference = LoginPreference(requireContext())
+        val token = loginPreference.getToken()
+        val tokenauth = "Bearer $token"
+
+        getUsersData(tokenauth)
+
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnUpdate.setOnClickListener{
             val intent = Intent(requireActivity(),UpdateActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnLogout.setOnClickListener{
+            val loginPreference = LoginPreference(requireContext())
+            loginPreference.clearUser()
             val intent = Intent(requireActivity(),LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
+
+    private fun getUsersData(token: String) {
+        val client = ApiConfig().getApiService().getUsers(token)
+        client.enqueue(object : Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>)
+            {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    val fn = responseBody.first_name
+                    val ls = responseBody.last_name
+                    val em = responseBody.email
+
+                    setText(fn, ls, em)
+
+                } else {
+                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+//                    showLoading(false)
+                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun setText(firstname: String, lastName: String, email: String) {
+        binding.etFirstnameprofile.hint = firstname
+        binding.etLastnameprofile.hint = lastName
+        binding.etEmailprofile.hint = email
+    }
+
+
 }

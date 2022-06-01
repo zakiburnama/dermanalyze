@@ -16,76 +16,20 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var loginPreference: LoginPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loginPreference = LoginPreference(this)
 
         setupView()
 
 
         binding.btnLogin.setOnClickListener {
-//            val email = binding.etEmail.text.toString().trim()
-//            val password = binding.etPassword.text.toString().trim()
-
-//            val email = "coba1111@gmail.com"
-//            val password = "coba123"
-
-            val email = "budi@gmail.com"
-            val password = "budi123"
-
-            Log.i("TAG", "##### $email")
-            Log.i("TAG", "##### $password")
-
-            val client = ApiConfig().getApiService().login(email, password)
-//            val client = ApiConfig().getApiService().loginUser(email, password)
-            client.enqueue(object : Callback<LoginResponse> {
-//            client.enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-//                    showLoading(false)
-
-                    Log.i("TAG", "##### sukses")
-
-                    val responseBody = response.body()
-                    if (response.isSuccessful && responseBody != null) {
-
-//                        val token = responseBody.access_token
-                        val token = responseBody.access_token
-
-                        Log.i("TAG", "##### $token")
-                        Log.i("TAG", "##### $token")
-                        Log.i("TAG", "##### $token")
-//                        val isLogin = true
-//
-//                        saveUser(token, isLogin)
-
-//                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-//                        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this@LoginActivity).toBundle())
-//                        finishAfterTransition()
-
-
-                    } else {
-                        Toast.makeText(this@LoginActivity, response.message(), Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                    showLoading(false)
-                    Log.i("TAG", "##### gagal $t")
-                    Toast.makeText(this@LoginActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-
-
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-
+            postLogin()
         }
 
         binding.tvRegiter.setOnClickListener {
@@ -95,6 +39,46 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun postLogin() {
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
+
+        val client = ApiConfig().getApiService().login(email, password)
+        client.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    val token = responseBody.access_token.toString()
+                    val isLogin = true
+                    saveUser(token, isLogin)
+                    moveActivity()
+
+                } else {
+                    Toast.makeText(this@LoginActivity, response.message(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                    showLoading(false)
+                Toast.makeText(this@LoginActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun saveUser(token: String, isLogin: Boolean) {
+        loginPreference.setToken(token)
+        loginPreference.setIsLogin(isLogin)
+    }
+
+    private fun moveActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupView() {
@@ -109,4 +93,5 @@ class LoginActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
+
 }
