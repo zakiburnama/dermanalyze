@@ -32,14 +32,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:enabled="false"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="First Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FirstName" />
-
     <TextView
         android:id="@+id/LastName"
         android:layout_width="wrap_content"
@@ -75,6 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Email"
@@ -96,6 +95,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:enabled="false"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Password"
