@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class ListArticlesAdapter (private val listArticles: ArrayList<Articles>) : RecyclerView.Adapter<ListArticlesAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -22,8 +27,12 @@ class ListArticlesAdapter (private val listArticles: ArrayList<Articles>) : Recy
         holder.imgPhoto.setImageResource(photo)
         holder.tvtitleArticles.text = name
         holder.tvreadmore.text = description
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked() }
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listArticles[holder.adapterPosition])
+//            Toast.makeText(holder.itemView.context, "Kamu memilih " + listArticles[holder.adapterPosition].titleArticles , Toast.LENGTH_SHORT).show()
+        }
     }
+
 
     override fun getItemCount(): Int = listArticles.size
 
@@ -34,10 +43,10 @@ class ListArticlesAdapter (private val listArticles: ArrayList<Articles>) : Recy
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked()
+        fun onItemClicked(data: Articles)
     }
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
+//    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+//        this.onItemClickCallback = onItemClickCallback
+//    }
 }

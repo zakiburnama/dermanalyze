@@ -1,11 +1,13 @@
 package com.example.dermanalyze_bangkit_capstone
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -82,6 +84,22 @@ class MainFragment : Fragment() {
 ////                moveActivity(data)
 //            }
 //        })
+        listArticlesAdapter.setOnItemClickCallback(object : ListArticlesAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Articles) {
+//                showSelectedHero(data)
+                moveActivity(data)
+                Log.i("TAG", "####### ${data.titleArticles}")
+                Log.i("TAG", "####### ${data.photo}")
+                Log.i("TAG", "####### ${data.readmorearticle}")
+                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun moveActivity(data: Articles) {
+        val intent = Intent(context, DetailMainActivity::class.java)
+//        intent.putExtra(DetailMainActivity.EXTRA_USER, data)
+        startActivity(intent)
     }
 
     companion object {
