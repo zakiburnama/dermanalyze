@@ -48,6 +48,12 @@
         <item>Readmore-></item>
         <item>Readmore-></item>
     </string-array>
+    <string-array name="Article">
+        <item>Readmore-></item>
+        <item>Readmore-></item>
+        <item>Readmore-></item>
+        <item>Readmore-></item>
+    </string-array>
     <integer-array name="data_photo">
         <item>@drawable/article1</item>
         <item>@drawable/article2</item>

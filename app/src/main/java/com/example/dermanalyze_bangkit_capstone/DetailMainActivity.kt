@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.dermanalyze_bangkit_capstone.databinding.ActivityDetailMainBinding
 
+
 class DetailMainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMainBinding
