@@ -4,7 +4,9 @@ import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.POST
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,7 +36,6 @@ data class RegisterResponse(
     val detail: List<Detail>?
 )
 
-
 data class LoginResponse(
     @field:SerializedName("access_token")
     val access_token: String?,
@@ -55,6 +56,23 @@ data class Detail(
 
     @field:SerializedName("type")
     val type: String
+)
+
+data class PredictResponse(
+    @field:SerializedName("id") val id: Int?,
+    @field:SerializedName("photo_url") val photo_url: String,
+    @field:SerializedName("pred_results") val pred_results: String,
+    @field:SerializedName("created_at") val created_at: String,
+    @field:SerializedName("owner_id") val owner_id: Int,
+
+    @field:SerializedName("owner") val owner: Owner?,
+
+    @field:SerializedName("detail") val detail: List<Detail>?
+)
+
+data class Owner(
+    @field:SerializedName("id") val id: Int?,
+    @field:SerializedName("email") val email: String
 )
 
 interface ApiService {
@@ -79,6 +97,13 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body userData: UpdateUsers
     ): Call<RegisterResponse>
+
+    @Multipart
+    @POST("predict")
+    fun uploadImage(
+        @Header("Authorization") authorization: String,
+        @Part file: MultipartBody.Part
+    ): Call<PredictResponse>
 
 }
 

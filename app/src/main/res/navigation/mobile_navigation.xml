@@ -31,7 +31,7 @@
 
     <activity
         android:id="@+id/navigation_camera"
-        android:name="com.example.dermanalyze_bangkit_capstone.CameraActivity"
+        android:name="com.example.dermanalyze_bangkit_capstone.ScanActivity"
         android:label="@string/title_camera"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/activity_scan" />
 </navigation>

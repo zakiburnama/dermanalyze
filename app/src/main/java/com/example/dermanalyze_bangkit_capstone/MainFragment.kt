@@ -98,7 +98,9 @@ class MainFragment : Fragment() {
 
     private fun moveActivity(data: Articles) {
         val intent = Intent(context, DetailMainActivity::class.java)
-//        intent.putExtra(DetailMainActivity.EXTRA_USER, data)
+        intent.putExtra(DetailMainActivity.EXTRA_TITLE, data.titleArticles)
+        intent.putExtra(DetailMainActivity.EXTRA_PHOTO, data.photo)
+        intent.putExtra(DetailMainActivity.EXTRA_READ, data.readmorearticle)
         startActivity(intent)
     }
 
