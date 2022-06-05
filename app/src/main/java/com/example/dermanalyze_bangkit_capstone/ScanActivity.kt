@@ -101,8 +101,8 @@ class ScanActivity : AppCompatActivity() {
 
     private fun uploadImage() {
 
-        val descBlank = binding.etDescription.text.isBlank()
-        val desc = binding.etDescription.text.toString()
+//        val descBlank = binding.etDescription.text.isBlank()
+//        val desc = binding.etDescription.text.toString()
 
         val loginPreference = LoginPreference(this)
         val token = loginPreference.getToken()
@@ -111,7 +111,7 @@ class ScanActivity : AppCompatActivity() {
         if (getFile != null) {
 //            showLoading(true)
             val file = reduceFileImage(getFile as File)
-            val description = desc.toRequestBody("text/plain".toMediaType())
+//            val description = desc.toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",

@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".DetailMainActivity">
 
-    <com.mikhaellopez.circularimageview.CircularImageView
+    <ImageView
         android:id="@+id/avatar"
-        android:layout_width="145dp"
-        android:layout_height="152dp"
-        android:layout_marginTop="32dp"
-        app:civ_border_color="@color/black"
-        app:civ_border_width="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
