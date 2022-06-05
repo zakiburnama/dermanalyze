@@ -14,13 +14,7 @@ class DetailMainActivity : AppCompatActivity() {
         binding = ActivityDetailMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val x = intent.getSerializableExtra(EXTRA_USER) as Articles
-//
-//        val y = x.titleArticles.toString()
-//
-//        Log.i("TAG", "#### y")
-
-//        binding.textView3.text = y
+        supportActionBar?.hide()
 
         val title = intent.getStringExtra(EXTRA_TITLE)
         val readmore = intent.getStringExtra(EXTRA_READ)
