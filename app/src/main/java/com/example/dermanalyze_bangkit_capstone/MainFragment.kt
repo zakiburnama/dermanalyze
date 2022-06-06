@@ -50,6 +50,12 @@ class MainFragment : Fragment() {
 ////        showRecyclerList()
 //        Log.i("TAG", "##### isi list artikel $list")
 
+        rvArticles = view.findViewById(R.id.rv_articlescancer)
+        rvArticles.setHasFixedSize(true)
+        list.clear()
+        list.addAll(listArticles)
+        showRecyclerList()
+
         rvArticles = view.findViewById(R.id.rv_articles)
         rvArticles.setHasFixedSize(true)
         list.clear()

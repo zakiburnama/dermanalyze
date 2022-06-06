@@ -44,11 +44,22 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_articlescancer"
+        android:layout_width="412dp"
+        android:layout_height="144dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224"
+        tools:listitem="@layout/item_row_articles" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_articles"
-        android:layout_width="431dp"
-        android:layout_height="372dp"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +78,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rv_articles"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.989" />
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
