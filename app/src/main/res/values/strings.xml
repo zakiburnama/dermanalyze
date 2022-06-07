@@ -37,16 +37,43 @@
     <string name="register">Register</string>
 
     <string-array name="data_title">
-        <item>Bisakah Kanker kulit disembuhkan?</item>
         <item>Apa itu Kanker Kulit?</item>
-        <item>Bisakah kanker Kulit disembuhkan?</item>
-        <item>Bagaimana cara mengetahui Skin Cancer?</item>
+        <item>Bisakah Kanker kulit disembuhkan?</item>
+        <item>Apa gejala umum dari Kanker kulit?</item>
+        <item>Bagaimana cara pencegahan Kanker Kulit?</item>
     </string-array>
     <string-array name="readmore">
-        <item>Readmore-></item>
-        <item>Readmore-></item>
-        <item>Readmore-></item>
-        <item>Readmore-></item>
+        <item>Kanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal.
+        Kanker kulit diduga kuat disebabkan oleh paparan sinar ultraviolet dari matahari. Sinar UV ini dapat menyebabkan rusaknya sel pada kulit, hingga menimbulkan kanker kulit.
+        Ada tiga jenis kanker kulit yang paling sering terjadi, yaitu:
+        \n-Karsinoma sel basal, yaitu kanker kulit yang berasal dari sel di bagian terdalam dari lapisan kulit terluar (epidermis).
+        \n-Karsinoma sel skuamosa, yaitu kanker kulit yang berasal dari sel di bagian tengah dan terluar dari epidermis.
+        \n-Melanoma, yaitu kanker kulit yang berasal dari sel penghasil pigmen kulit (melanosit).</item>
+        <item>Kanker kulit atau disebut Melanoma adalah salah satu jenis kanker yang kurang umum tapi kerap jadi momok lantaran relatif mudah menyebar.
+        \n
+        \nApabila seseorang sudah didiagnosis menderita penyakit kanker kulit melanoma, jangan tunda lagi untuk mendiskusikan pengobatan paling tepat dengan dokter.
+        \n
+        \nPertimbangkan dengan matang setiap manfaat atau risiko pengobatan penyakit ini. Menurut American Cancer Society, secara umum ada lima jenis cara menyembuhkan kanker kulit melanoma, yakni:
+        \n-Operasi
+        \n-Imunoterapi
+        \n-Terapi target dengan obat
+        \n-Kemoterapi
+        \n-Terapi radiasi
+        </item>
+        <item>Kanker kulit dapat tumbuh di daerah kulit manapun, termasuk pada tahi lalat yang sudah ada dan bisa berubah menjadi ganas. Pada laki-laki, kanker ini biasanya muncul pada wajah dan badan. Sedangkan, bagian tubuh wanita yang umumnya terkena kanker ini adalah di tungkai bawah.Berikut gejala-gejala umum Kanker Kulit:
+            \n 1. Terdapat benjolan berwarna cokelat dengan bintik-bintik hitam pada benjolan.
+            \n 2. Tahi lalat pada tubuh tiba-tiba berubah warna atau bertambah besar, serta mengeluarkan darah.
+            \n 3. Munculnya luka kecil pada kulit dengan tepi yang tidak beraturan dan berwarna merah, putih, biru, atau biru kehitaman.
+            \n 4. Di telapak tangan, telapak kaki, ujung jari tangan atau kaki, muncul lesi berwarna gelap.
+            \n 5. Muncul lesi berwarna gelap pada membran mukosa di dalam mulut, hidung, Miss V, atau anus.</item>
+        <item>Cara terbaik untuk mencegah kanker kulit adalah melindungi kulit dari paparan sinar matahari atau sumber sinar ultraviolet lainnya, misalnya alat tanning kulit. Langkah yang dapat dilakukan antara lain:
+            \n -Hindari sinar matahari pada siang hari, karena paparan terkuat sinar ultraviolet dari matahari berlangsung pada jam 10 pagi hingga 4 sore.
+            \n -Gunakan tabir surya secara rutin, untuk mencegah penyerapan sinar ultraviolet ke dalam kulit dan mengurangi risiko kerusakan kulit akibat sinar matahari.
+            \n -Gunakan pakaian yang menutupi tubuh, seperti baju lengan panjang dan celana panjang, untuk melindungi kulit dari sinar matahari.
+            \n -Gunakan pula topi dan kacamata hitam saat keluar rumah, untuk memberikan perlindungan lebih terhadap kepala dan mata dari radiasi sinar matahari.
+            \n -Hindari penggunaan tanning bed, yaitu alat untuk menggelapkan kulit karena dapat memancarkan radiasi ultraviolet yang berbahaya bagi kulit.
+            \n -Hati-hati saat menggunakan obat yang menyebabkan efek samping pada kulit, seperti antibiotik. Agar aman, konsultasikan kepada dokter terlebih dulu.
+            \n -Lakukan pemeriksaan kulit secara rutin dan segera konsultasikan kepada dokter, jika Anda mencurigai adanya perubahan atau kelainan pada kulit.</item>
     </string-array>
     <string-array name="Article">
         <item>Readmore-></item>

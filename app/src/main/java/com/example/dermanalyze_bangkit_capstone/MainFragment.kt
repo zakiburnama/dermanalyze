@@ -50,6 +50,12 @@ class MainFragment : Fragment() {
 ////        showRecyclerList()
 //        Log.i("TAG", "##### isi list artikel $list")
 
+        rvArticles = view.findViewById(R.id.rv_articlescancer)
+        rvArticles.setHasFixedSize(true)
+        list.clear()
+        list.addAll(listArticles)
+        showRecyclerList2()
+
         rvArticles = view.findViewById(R.id.rv_articles)
         rvArticles.setHasFixedSize(true)
         list.clear()
@@ -76,6 +82,27 @@ class MainFragment : Fragment() {
 
     private fun showRecyclerList() {
         rvArticles.layoutManager = LinearLayoutManager(activity)
+        val listArticlesAdapter = ListArticlesAdapter(list)
+        rvArticles.adapter = listArticlesAdapter
+
+//        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
+//            override fun onItemClicked() {
+////                moveActivity(data)
+//            }
+//        })
+        listArticlesAdapter.setOnItemClickCallback(object : ListArticlesAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Articles) {
+//                showSelectedHero(data)
+                moveActivity(data)
+                Log.i("TAG", "####### ${data.titleArticles}")
+                Log.i("TAG", "####### ${data.photo}")
+                Log.i("TAG", "####### ${data.readmorearticle}")
+                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+    private fun showRecyclerList2() {
+        rvArticles.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         val listArticlesAdapter = ListArticlesAdapter(list)
         rvArticles.adapter = listArticlesAdapter
 
