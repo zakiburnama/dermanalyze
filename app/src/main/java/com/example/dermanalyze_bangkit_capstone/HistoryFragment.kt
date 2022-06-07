@@ -1,59 +1,96 @@
 package com.example.dermanalyze_bangkit_capstone
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dermanalyze_bangkit_capstone.databinding.FragmentHistoryBinding
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+    ): View {
+
+        _binding = FragmentHistoryBinding.inflate(layoutInflater)
+        val view = binding.root
+
+        val loginPreference = LoginPreference(requireContext())
+        val token = loginPreference.getToken()
+        val tokenauth = "Bearer $token"
+
+        getUsersData(tokenauth)
+
+//        val xx = "https://dermanalyze-api-dev.herokuapp.com/static/images/02297417e6b71f6c7912.jpg"
+
+//        Picasso.get().load(xx).into(binding.imageView2)
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun getUsersData(token: String) {
+        val client = ApiConfig().getApiService().getHistory(token)
+        client.enqueue(object : Callback<ArrayList<PredictResponse>> {
+            override fun onResponse(
+                call: Call<ArrayList<PredictResponse>>,
+                response: Response<ArrayList<PredictResponse>>
+            )
+            {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    Log.i("TAG", "##### ${responseBody}")
+                    Log.i("TAG", "##### SUKSES")
+
+                    showRecyclerList(responseBody)
+
+//                    val x = responseBody[0].created_at
+//                    val y = responseBody[0].pred_results
+//                    val z = responseBody[0].photo_url
+
+
+//                    binding.textView5.text = y
+
+//                    Picasso.get().load(z).into(binding.imageView2)
+
+                } else {
+                    Log.i("TAG", "##### SUKSES?")
+                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
+            override fun onFailure(call: Call<ArrayList<PredictResponse>>, t: Throwable) {
+//                    showLoading(false)
+                Log.i("TAG", "##### GAGAL")
+                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
+    private fun showRecyclerList(data: ArrayList<PredictResponse>) {
+//        private lateinit var listUserAdapter : ListUserAdapter
+        binding.rvHistory.layoutManager = LinearLayoutManager(context)
+        val listHistoryAdapter = ListHistoryAdapter(data)
+//        listUserAdapter.setData(list)
+        binding.rvHistory.adapter = listHistoryAdapter
+
+//        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
+//            override fun onItemClicked(data: User) {
+//                moveActivityUser(data)
+//            }
+//        })
+    }
+
 }

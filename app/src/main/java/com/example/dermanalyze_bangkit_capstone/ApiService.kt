@@ -105,6 +105,11 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): Call<PredictResponse>
 
+    @GET("history")
+    fun getHistory(
+        @Header("Authorization") authorization: String,
+    ): Call<ArrayList<PredictResponse>>
+
 }
 
 
