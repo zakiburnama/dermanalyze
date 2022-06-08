@@ -27,6 +27,7 @@ class MainFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var rvArticles: RecyclerView
+    private lateinit var rvCancer: RecyclerView
     private val list = ArrayList<Articles>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,17 +51,17 @@ class MainFragment : Fragment() {
 ////        showRecyclerList()
 //        Log.i("TAG", "##### isi list artikel $list")
 
+
+        list.clear()
+        list.addAll(listArticles)
+
         rvArticles = view.findViewById(R.id.rv_articlescancer)
         rvArticles.setHasFixedSize(true)
-        list.clear()
-        list.addAll(listArticles)
-        showRecyclerList2()
-
-        rvArticles = view.findViewById(R.id.rv_articles)
-        rvArticles.setHasFixedSize(true)
-        list.clear()
-        list.addAll(listArticles)
         showRecyclerList()
+
+        rvCancer = view.findViewById(R.id.rv_articles)
+        rvCancer.setHasFixedSize(true)
+        showRecyclerList2()
 
         return  view
     }
@@ -102,16 +103,16 @@ class MainFragment : Fragment() {
         })
     }
     private fun showRecyclerList2() {
-        rvArticles.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        val listArticlesAdapter = ListArticlesAdapter(list)
-        rvArticles.adapter = listArticlesAdapter
+        rvCancer.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        val listCancerAdapter = ListCancerAdapter(list)
+        rvCancer.adapter = listCancerAdapter
 
 //        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
 //            override fun onItemClicked() {
 ////                moveActivity(data)
 //            }
 //        })
-        listArticlesAdapter.setOnItemClickCallback(object : ListArticlesAdapter.OnItemClickCallback {
+        listCancerAdapter.setOnItemClickCallback(object : ListCancerAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Articles) {
 //                showSelectedHero(data)
                 moveActivity(data)

@@ -12,6 +12,7 @@
         android:id="@+id/circularImageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:src="@drawable/chad"
         android:elevation="3dp"
@@ -25,6 +26,7 @@
         android:layout_marginTop="45dp"
         android:layout_marginHorizontal="8dp"
         android:layout_gravity="center"
+        android:elevation="3dp"
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,42 +46,53 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_articlescancer"
-        android:layout_width="412dp"
-        android:layout_height="144dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
-        tools:listitem="@layout/item_row_articles" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_articles"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/item_row_articles" />
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Latest Article"
+        android:layout_marginTop="8dp"
+        android:text="About Cancer"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rv_articles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.989" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_articles"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:listitem="@layout/item_row_cancer" />
+
+    <TextView
+        android:id="@+id/tv_articlescancer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:layout_marginTop="8dp"
+        android:text="About Cancer"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_articles" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_articlescancer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_articlescancer"
+        app:layout_constraintVertical_bias="0.224"
+        tools:listitem="@layout/item_row_articles" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

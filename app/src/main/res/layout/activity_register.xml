@@ -21,11 +21,10 @@
 
     <ImageView
         android:id="@+id/hiasanlogo2"
-        android:layout_width="490dp"
-        android:layout_height="142dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/hiasanlogo2" />
 
@@ -89,21 +88,21 @@
         android:id="@+id/btn_regiter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:text="@string/register"
-        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login"
         app:layout_constraintEnd_toEndOf="@+id/et_passwordregis"
-        app:layout_constraintStart_toStartOf="@+id/et_passwordregis"
-        app:layout_constraintTop_toBottomOf="@+id/et_passwordregis" />
+        app:layout_constraintStart_toStartOf="@+id/et_passwordregis"/>
 
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:text="Sudah punya akun?"
-        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/hiasanlogo2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_regiter" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
     <TextView

@@ -26,6 +26,7 @@ class ListArticlesAdapter (private val listArticles: ArrayList<Articles>) : Recy
         val (name, description, photo) = listArticles[position]
         holder.imgPhoto.setImageResource(photo)
         holder.tvtitleArticles.text = name
+//        holder.tvtitleArticles.text = "name"
         holder.tvreadmore.text = description
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listArticles[holder.adapterPosition])
