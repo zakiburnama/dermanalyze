@@ -1,5 +1,6 @@
 package com.example.dermanalyze_bangkit_capstone
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,12 @@ class ProfileFragment : Fragment(){
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+
+    private lateinit var loginPreference: LoginPreference
+    private lateinit var tokenauth: String
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,9 +33,9 @@ class ProfileFragment : Fragment(){
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val loginPreference = LoginPreference(requireContext())
+        loginPreference = LoginPreference(requireContext())
         val token = loginPreference.getToken()
-        val tokenauth = "Bearer $token"
+        tokenauth = "Bearer $token"
 
         getUsersData(tokenauth)
 
@@ -43,12 +50,8 @@ class ProfileFragment : Fragment(){
             startActivity(intent)
         }
 
-        binding.btnLogout.setOnClickListener{
-            val loginPreference = LoginPreference(requireContext())
-            loginPreference.clearUser()
-            val intent = Intent(requireActivity(),LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+        binding.tvLogout.setOnClickListener {
+            logout(tokenauth)
         }
     }
 
@@ -79,10 +82,40 @@ class ProfileFragment : Fragment(){
         })
     }
 
+    private fun logout(token: String) {
+        val client = ApiConfig().getApiService().logout(token)
+        client.enqueue(object : Callback<LogoutResponse> {
+            override fun onResponse(
+                call: Call<LogoutResponse>,
+                response: Response<LogoutResponse>)
+            {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    moveLogout()
+                } else {
+                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
+//                    showLoading(false)
+                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setText(firstname: String, lastName: String, email: String) {
-        binding.etFirstnameprofile.hint = firstname
-        binding.etLastnameprofile.hint = lastName
-        binding.etEmailprofile.hint = email
+        binding.tvUsernameProfile.text = """$firstname $lastName"""
+        binding.tvEmailProfiel.text = email
+    }
+
+    private fun moveLogout() {
+        loginPreference = LoginPreference(requireContext())
+        loginPreference.clearUser()
+        val intent = Intent(requireActivity(),LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
 

@@ -47,6 +47,14 @@ data class LoginResponse(
     val detail: List<Detail>?
 )
 
+data class LogoutResponse(
+    @field:SerializedName("email")
+    val email: String?,
+
+    @field:SerializedName("logout_at")
+    val logout_at: String?
+)
+
 data class Detail(
     @field:SerializedName("loc")
     val loc: List<String>,
@@ -109,6 +117,12 @@ interface ApiService {
     fun getHistory(
         @Header("Authorization") authorization: String,
     ): Call<ArrayList<PredictResponse>>
+
+//    @FormUrlEncoded
+    @POST("logout")
+    fun logout(
+        @Header("Authorization") authorization: String
+    ): Call<LogoutResponse>
 
 }
 

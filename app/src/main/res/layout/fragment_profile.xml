@@ -4,132 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="18dp">
+    android:layout_height="match_parent">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/circularImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="18dp"
+        android:layout_marginStart="18dp"
         android:src="@drawable/chad"
         android:elevation="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/FirstName"
+        android:id="@+id/tv_username_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularImageView" />
-
-    <EditText
-        android:id="@+id/et_firstnameprofile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:hint="First Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstName" />
+        android:layout_marginStart="18dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/circularImageView"
+        app:layout_constraintTop_toTopOf="@+id/circularImageView" />
 
     <TextView
-        android:id="@+id/LastName"
+        android:id="@+id/tv_email_profiel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/et_firstnameprofile"
-        app:layout_constraintTop_toBottomOf="@+id/et_firstnameprofile" />
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/tv_username_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username_profile" />
 
-    <EditText
-        android:id="@+id/et_lastnameprofile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:hint="Last Name"
-        app:layout_constraintEnd_toEndOf="@+id/et_firstnameprofile"
-        app:layout_constraintStart_toStartOf="@+id/LastName"
-        app:layout_constraintTop_toBottomOf="@+id/LastName" />
-
-    <TextView
-        android:id="@+id/Email"
+    <Button
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/et_lastnameprofile"
-        app:layout_constraintTop_toBottomOf="@+id/et_lastnameprofile" />
+        android:text="Edit Profiel"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_email_profiel"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_profiel" />
 
-    <EditText
-        android:id="@+id/et_emailprofile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:hint="Email"
-        app:layout_constraintEnd_toEndOf="@+id/et_lastnameprofile"
-        app:layout_constraintStart_toStartOf="@+id/Email"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
-
-    <TextView
-        android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/et_emailprofile"
-        app:layout_constraintTop_toBottomOf="@+id/et_emailprofile" />
-
-    <EditText
-        android:id="@+id/et_passwordprofile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:hint="Password"
-        app:layout_constraintEnd_toEndOf="@+id/et_emailprofile"
-        app:layout_constraintStart_toStartOf="@+id/Password"
-        app:layout_constraintTop_toBottomOf="@+id/Password" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_half"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_passwordprofile">
+        app:layout_constraintTop_toBottomOf="@+id/btn_update">
 
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_width="wrap_content"
+        <Switch
+            android:id="@+id/switch_darkmode"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
-            android:text="Update" />
+            android:layout_marginVertical="16dp"
+            android:drawableStart="@drawable/ic_baseline_dark_mode_24"
+            android:enabled="false"
+            android:text="Dark Mode"
+            android:textSize="18sp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout" />
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_baseline_language_24"
+            android:enabled="false"
+            android:text="Bahasa Indonesia"
+            android:textSize="18sp"
+            app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_baseline_info_24"
+            android:enabled="false"
+            android:text="About"
+            android:textSize="18sp"
+            app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawableStart="@drawable/ic_baseline_login_24"
+            android:enabled="true"
+            android:text="Logout"
+            android:textSize="18sp"
+            app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
     </LinearLayout>
 
 

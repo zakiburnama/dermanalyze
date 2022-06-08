@@ -28,7 +28,7 @@ class ListHistoryAdapter (private val listHistory: ArrayList<PredictResponse>) :
         val (id, photo, predict, create, _, _, _) = listHistory[position]
 
 //        holder.imgPhoto2.setImageResource()
-//        Picasso.get().load(photo).into(holder.imgPhoto2)
+        Picasso.get().load(photo).into(holder.imgPhoto2)
         holder.tvtitleArticles2.text = predict
         holder.tvreadmore2.text = create
 
