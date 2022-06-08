@@ -12,6 +12,7 @@
         android:id="@+id/circularImageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:src="@drawable/chad"
         android:elevation="3dp"

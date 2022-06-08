@@ -1,46 +1,47 @@
 package com.example.dermanalyze_bangkit_capstone
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.location.Location
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
-import com.example.dermanalyze_bangkit_capstone.databinding.ActivityScanBinding
+import com.example.dermanalyze_bangkit_capstone.databinding.FragmentScanBinding
 import com.example.dermanalyze_bangkit_capstone.utils.reduceFileImage
 import com.example.dermanalyze_bangkit_capstone.utils.rotateBitmap
 import com.example.dermanalyze_bangkit_capstone.utils.uriToFile
-import com.google.android.gms.location.FusedLocationProviderClient
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-class ScanActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityScanBinding
+class ScanFragment : Fragment() {
+
+    private var _binding: FragmentScanBinding? = null
+    private val binding get() = _binding!!
 
     private var getFile: File? = null
 
     companion object {
         const val CAMERA_X_RESULT = 200
 
-        val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-        const val REQUEST_CODE_PERMISSIONS = 10
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
 
     override fun onRequestPermissionsResult(
@@ -52,42 +53,50 @@ class ScanActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
-                    this,
+                    context,
                     "Tidak mendapatkan permission.",
                     Toast.LENGTH_SHORT
                 ).show()
-                finish()
+//                finish()
             }
         }
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityScanBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-//        getMyLastLocation()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = FragmentScanBinding.inflate(layoutInflater, container, false)
+        val view = binding.root
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
-                this,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
+                requireContext() as Activity,
+                ScanActivity.REQUIRED_PERMISSIONS,
+                ScanActivity.REQUEST_CODE_PERMISSIONS
             )
         }
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.cameraXButton.setOnClickListener { startCameraX() }
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.uploadButton.setOnClickListener { uploadImage() }
-
     }
 
+
     private fun startCameraX() {
-        val intent = Intent(this, CameraActivity::class.java)
+        val intent = Intent(context, CameraActivity::class.java)
         launcherIntentCameraX.launch(intent)
     }
 
@@ -104,7 +113,7 @@ class ScanActivity : AppCompatActivity() {
 //        val descBlank = binding.etDescription.text.isBlank()
 //        val desc = binding.etDescription.text.toString()
 
-        val loginPreference = LoginPreference(this)
+        val loginPreference = LoginPreference(requireContext())
         val token = loginPreference.getToken()
         val tokenauth = "Bearer $token"
 
@@ -138,7 +147,7 @@ class ScanActivity : AppCompatActivity() {
                             Log.i("TAG", "###### SUKSES")
                         }
                     } else {
-                        Toast.makeText(this@ScanActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
 
                         Log.i("TAG", "###### GAGAL ${response.body()?.detail}")
                         Log.i("TAG", "###### GAGAL ${response.message()}")
@@ -147,21 +156,21 @@ class ScanActivity : AppCompatActivity() {
                 }
                 override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
 //                    showLoading(false)
-                    Toast.makeText(this@ScanActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
             })
         } else {
             if (getFile == null)
-                Toast.makeText(this, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
             else
-                Toast.makeText(this, "Silakan isi deskripsi terlebih dahulu.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Silakan isi deskripsi terlebih dahulu.", Toast.LENGTH_SHORT).show()
         }
     }
 
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        if (it.resultCode == CAMERA_X_RESULT) {
+        if (it.resultCode == ScanActivity.CAMERA_X_RESULT) {
             val myFile = it.data?.getSerializableExtra("picture") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
 
@@ -179,9 +188,9 @@ class ScanActivity : AppCompatActivity() {
     private val launcherIntentGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if (result.resultCode == RESULT_OK) {
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
-            val myFile = uriToFile(selectedImg, this@ScanActivity)
+            val myFile = uriToFile(selectedImg, requireContext())
 
             getFile = myFile
 
