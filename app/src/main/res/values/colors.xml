@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="pink">#F06292</color>
-    <color name="navi">#2D3D4F</color>
+    <color name="navi2">#2D3D4F</color>
+
+    <color name="navi">#313D54</color>
+    <color name="oren">#E2872C</color>
+    <color name="biru">#4DB9E1</color>
 </resources>

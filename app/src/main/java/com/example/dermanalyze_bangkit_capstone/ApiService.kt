@@ -126,7 +126,6 @@ interface ApiService {
 
 }
 
-
 class ApiConfig {
     fun getApiService(): ApiService {
         val loggingInterceptor =
@@ -135,7 +134,8 @@ class ApiConfig {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://dermanalyze-api-dev.herokuapp.com/")
+//            .baseUrl("https://dermanalyze-api-dev.herokuapp.com/")
+            .baseUrl("http://35.219.67.156/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

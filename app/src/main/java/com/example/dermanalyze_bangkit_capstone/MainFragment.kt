@@ -29,6 +29,7 @@ class MainFragment : Fragment() {
     private lateinit var rvArticles: RecyclerView
     private lateinit var rvCancer: RecyclerView
     private val list = ArrayList<Articles>()
+    private val list2 = ArrayList<Articles>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,9 @@ class MainFragment : Fragment() {
         list.clear()
         list.addAll(listArticles)
 
+        list2.clear()
+        list2.addAll(listCancer)
+
         rvArticles = view.findViewById(R.id.rv_articlescancer)
         rvArticles.setHasFixedSize(true)
         showRecyclerList()
@@ -66,13 +70,24 @@ class MainFragment : Fragment() {
         return  view
     }
 
-
-
     private val listArticles: ArrayList<Articles>
         get() {
             val dataName = resources.getStringArray(R.array.data_title)
             val dataDescription = resources.getStringArray(R.array.readmore)
             val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+            val listArticles = ArrayList<Articles>()
+            for (i in dataName.indices) {
+                val articles = Articles(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
+                listArticles.add(articles)
+            }
+            return listArticles
+        }
+
+    private val listCancer: ArrayList<Articles>
+        get() {
+            val dataName = resources.getStringArray(R.array.data_cancer)
+            val dataDescription = resources.getStringArray(R.array.data_cancer)
+            val dataPhoto = resources.obtainTypedArray(R.array.data_photo_cancer)
             val listArticles = ArrayList<Articles>()
             for (i in dataName.indices) {
                 val articles = Articles(dataName[i],dataDescription[i], dataPhoto.getResourceId(i, -1))
@@ -98,28 +113,22 @@ class MainFragment : Fragment() {
                 Log.i("TAG", "####### ${data.titleArticles}")
                 Log.i("TAG", "####### ${data.photo}")
                 Log.i("TAG", "####### ${data.readmorearticle}")
-                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
             }
         })
     }
     private fun showRecyclerList2() {
         rvCancer.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        val listCancerAdapter = ListCancerAdapter(list)
+        val listCancerAdapter = ListCancerAdapter(list2)
         rvCancer.adapter = listCancerAdapter
 
-//        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
-//            override fun onItemClicked() {
-////                moveActivity(data)
-//            }
-//        })
         listCancerAdapter.setOnItemClickCallback(object : ListCancerAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Articles) {
-//                showSelectedHero(data)
                 moveActivity(data)
-                Log.i("TAG", "####### ${data.titleArticles}")
-                Log.i("TAG", "####### ${data.photo}")
-                Log.i("TAG", "####### ${data.readmorearticle}")
-                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
+//                Log.i("TAG", "####### ${data.titleArticles}")
+//                Log.i("TAG", "####### ${data.photo}")
+//                Log.i("TAG", "####### ${data.readmorearticle}")
+//                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
             }
         })
     }

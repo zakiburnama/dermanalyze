@@ -28,32 +28,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/hiasanlogo2" />
 
-    <EditText
-        android:id="@+id/et_email"
+    <TextView
+        android:id="@+id/DERMANALYZE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:autofillHints="Email..."
-        android:ems="10"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_horizontal"
+        android:text="DERMANALYZE"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <com.example.dermanalyze_bangkit_capstone.customeview.MyEditTextEmail
+        android:id="@+id/et_email"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_text"
+        android:paddingHorizontal="8dp"
+        android:layout_gravity="start"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="50dp"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@id/DERMANALYZE"/>
 
-    <EditText
+    <com.example.dermanalyze_bangkit_capstone.customeview.MyEditTextPass
         android:id="@+id/et_password"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:autofillHints="Password..."
-        android:ems="10"
+        android:layout_gravity="start"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_text"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="@+id/et_email"
         app:layout_constraintStart_toStartOf="@+id/et_email"
-        app:layout_constraintTop_toBottomOf="@+id/et_email"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_login"
@@ -74,23 +94,6 @@
         app:layout_constraintBottom_toTopOf="@+id/hiasanlogo2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/DERMANALYZE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-light"
-        android:gravity="center_horizontal"
-        android:text="DERMANALYZE"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.23" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
