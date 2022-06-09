@@ -87,4 +87,25 @@
         <item>@drawable/article3</item>
         <item>@drawable/article4</item>
     </integer-array>
+
+    <string-array name="data_cancer">
+        <item>Cancer 1</item>
+        <item>Cancer 2</item>
+        <item>Cancer 3</item>
+        <item>Cancer 4</item>
+        <item>Cancer 5</item>
+        <item>Cancer 6</item>
+        <item>Cancer 7</item>
+    </string-array>
+    <integer-array name="data_photo_cancer">
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+        <item>@drawable/chad</item>
+    </integer-array>
+
+
 </resources>

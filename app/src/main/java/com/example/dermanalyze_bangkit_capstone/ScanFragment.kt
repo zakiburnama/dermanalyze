@@ -123,7 +123,7 @@ class ScanFragment : Fragment() {
 //            val description = desc.toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
+                "image",
                 file.name,
                 requestImageFile
             )
@@ -149,14 +149,15 @@ class ScanFragment : Fragment() {
                     } else {
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
 
-                        Log.i("TAG", "###### GAGAL ${response.body()?.detail}")
+                        Log.i("TAG", "###### GAGAL ${response.body()}")
                         Log.i("TAG", "###### GAGAL ${response.message()}")
                         Log.i("TAG", "###### GAGAL $token")
                     }
                 }
                 override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
 //                    showLoading(false)
-                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                    Log.i("TAG", "###### GAGAL ${t}")
+//                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
             })
         } else {

@@ -51,7 +51,8 @@ class ProfileFragment : Fragment(){
         }
 
         binding.tvLogout.setOnClickListener {
-            logout(tokenauth)
+//            logout(tokenauth)
+            moveLogout()
         }
     }
 
@@ -94,7 +95,8 @@ class ProfileFragment : Fragment(){
                 if (response.isSuccessful && responseBody != null) {
                     moveLogout()
                 } else {
-                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
+                    moveLogout()
+//                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {

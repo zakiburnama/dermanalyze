@@ -25,7 +25,7 @@ class ListCancerAdapter  (private val listArticles: ArrayList<Articles>) : Recyc
         val (name, description, photo) = listArticles[position]
         holder.imgPhoto.setImageResource(photo)
 //        holder.tvtitleArticles.text = name
-        holder.tvtitleArticles.text = "name"
+        holder.tvtitleArticles.text = name
 //        holder.tvreadmore.text = description
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listArticles[holder.adapterPosition])

@@ -36,10 +36,10 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun register() {
-        val firstname = binding.etFirstnameregis.text.toString().trim()
-        val lastname = binding.etLastnameregis.text.toString().trim()
-        val email = binding.etEmailregis.text.toString().trim()
-        val password = binding.etPasswordregis.text.toString().trim()
+        val firstname = binding.etFirstnameRegister.text.toString().trim()
+        val lastname = binding.etLastnameregisRegister.text.toString().trim()
+        val email = binding.etEmailRegister.text.toString().trim()
+        val password = binding.etPasswordRegister.text.toString().trim()
 
         val valueregis = Register(
             first_name = firstname,
