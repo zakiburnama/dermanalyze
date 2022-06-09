@@ -149,9 +149,10 @@ class ScanFragment : Fragment() {
                     } else {
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
 
-                        Log.i("TAG", "###### GAGAL ${response.body()}")
-                        Log.i("TAG", "###### GAGAL ${response.message()}")
-                        Log.i("TAG", "###### GAGAL $token")
+                        Log.i("TAG", "###### GAGAL response.body ${response.body()}")
+                        Log.i("TAG", "###### GAGAL response.message ${response.message()}")
+                        Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
+//                        Log.i("TAG", "###### GAGAL $token")
                     }
                 }
                 override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
