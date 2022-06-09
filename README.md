@@ -5,9 +5,13 @@ This is the final project for Bangkit 2022, about Skin Cancer detection. As one 
 ## Build With
 
 This application build with a few techonology, which are :
-- * [Android Studio](https://developer.android.com/studio?hl=id&gclid=CjwKCAjwkYGVBhArEiwA4sZLuC3g18Aud6w4gsZ6imqi5lDyvZ3gZWfWA6Uw2tIfjnkZQ9vRdNG7FhoCVvQQAvD_BwE&gclsrc=aw.ds)
-- * [Kotlin](https://kotlinlang.org/docs/typecasts.html#type-erasure-and-generic-type-checks)
-- * [Google Maps Api](https://console.cloud.google.com/home/dashboard?project=seraphic-beacon-283014)
+- [Android Studio](https://developer.android.com/studio?hl=id&gclid=CjwKCAjwkYGVBhArEiwA4sZLuC3g18Aud6w4gsZ6imqi5lDyvZ3gZWfWA6Uw2tIfjnkZQ9vRdNG7FhoCVvQQAvD_BwE&gclsrc=aw.ds)
+- [Kotlin](https://kotlinlang.org/docs/typecasts.html#type-erasure-and-generic-type-checks)
+- [Google Maps Api](https://console.cloud.google.com/home/dashboard?project=seraphic-beacon-283014)
+- [Python](https://www.python.org/downloads/)
+- [FastApi](https://fastapi.tiangolo.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Jupyter Notebook](https://jupyter.org/)
 
 
 # Member
