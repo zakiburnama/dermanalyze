@@ -16,7 +16,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
@@ -84,19 +83,9 @@ class MainFragment : Fragment() {
         val listArticlesAdapter = ListArticlesAdapter(list)
         binding.rvArticlescancer.adapter = listArticlesAdapter
 
-//        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
-//            override fun onItemClicked() {
-////                moveActivity(data)
-//            }
-//        })
         listArticlesAdapter.setOnItemClickCallback(object : ListArticlesAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Articles) {
-//                showSelectedHero(data)
                 moveActivity(data)
-                Log.i("TAG", "####### ${data.titleArticles}")
-                Log.i("TAG", "####### ${data.photo}")
-                Log.i("TAG", "####### ${data.readmorearticle}")
-//                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -108,10 +97,6 @@ class MainFragment : Fragment() {
         listCancerAdapter.setOnItemClickCallback(object : ListCancerAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Articles) {
                 moveActivity(data)
-//                Log.i("TAG", "####### ${data.titleArticles}")
-//                Log.i("TAG", "####### ${data.photo}")
-//                Log.i("TAG", "####### ${data.readmorearticle}")
-//                Toast.makeText(context, "Kamu memilih " + data.titleArticles, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -152,5 +137,4 @@ class MainFragment : Fragment() {
         intent.putExtra(DetailMainActivity.EXTRA_READ, data.readmorearticle)
         startActivity(intent)
     }
-
 }
