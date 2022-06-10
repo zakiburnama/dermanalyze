@@ -8,50 +8,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dermanalyze_bangkit_capstone.databinding.FragmentMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    private lateinit var rvArticles: RecyclerView
-    private lateinit var rvCancer: RecyclerView
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
     private val list = ArrayList<Articles>()
     private val list2 = ArrayList<Articles>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_main, container, false)
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
+    ): View {
+        _binding = FragmentMainBinding.inflate(layoutInflater)
+        val view = binding.root
 
-//        binding.rvArticles.setHasFixedSize(true)
-//        list.addAll(listArticles)
-////        showRecyclerList()
-//        Log.i("TAG", "##### isi list artikel $list")
+        val loginPreference = LoginPreference(requireContext())
+        val token = loginPreference.getToken()
+        val tokenauth = "Bearer $token"
 
+        getUsersData(tokenauth)
 
         list.clear()
         list.addAll(listArticles)
@@ -59,12 +44,10 @@ class MainFragment : Fragment() {
         list2.clear()
         list2.addAll(listCancer)
 
-        rvArticles = view.findViewById(R.id.rv_articlescancer)
-        rvArticles.setHasFixedSize(true)
+        binding.rvArticles.setHasFixedSize(true)
         showRecyclerList()
 
-        rvCancer = view.findViewById(R.id.rv_articles)
-        rvCancer.setHasFixedSize(true)
+        binding.rvArticlescancer.setHasFixedSize(true)
         showRecyclerList2()
 
         return  view
@@ -86,7 +69,7 @@ class MainFragment : Fragment() {
     private val listCancer: ArrayList<Articles>
         get() {
             val dataName = resources.getStringArray(R.array.data_cancer)
-            val dataDescription = resources.getStringArray(R.array.data_cancer)
+            val dataDescription = resources.getStringArray(R.array.data_cancer_more)
             val dataPhoto = resources.obtainTypedArray(R.array.data_photo_cancer)
             val listArticles = ArrayList<Articles>()
             for (i in dataName.indices) {
@@ -97,9 +80,9 @@ class MainFragment : Fragment() {
         }
 
     private fun showRecyclerList() {
-        rvArticles.layoutManager = LinearLayoutManager(activity)
+        binding.rvArticlescancer.layoutManager = LinearLayoutManager(activity)
         val listArticlesAdapter = ListArticlesAdapter(list)
-        rvArticles.adapter = listArticlesAdapter
+        binding.rvArticlescancer.adapter = listArticlesAdapter
 
 //        listArticlesAdapter.setOnItemClickCallback(object : listArticlesAdapter.OnItemClickCallback {
 //            override fun onItemClicked() {
@@ -118,9 +101,9 @@ class MainFragment : Fragment() {
         })
     }
     private fun showRecyclerList2() {
-        rvCancer.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvArticles.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         val listCancerAdapter = ListCancerAdapter(list2)
-        rvCancer.adapter = listCancerAdapter
+        binding.rvArticles.adapter = listCancerAdapter
 
         listCancerAdapter.setOnItemClickCallback(object : ListCancerAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Articles) {
@@ -133,6 +116,35 @@ class MainFragment : Fragment() {
         })
     }
 
+    private fun getUsersData(token: String) {
+        val client = ApiConfig().getApiService().getUsers(token)
+        client.enqueue(object : Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>
+            )
+            {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    val fn = responseBody.first_name
+                    val ln = responseBody.last_name
+
+                    binding.tvUsername.text = "$fn $ln"
+
+//                    setText(fn, ls, em)
+
+                } else {
+                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+//                    showLoading(false)
+                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     private fun moveActivity(data: Articles) {
         val intent = Intent(context, DetailMainActivity::class.java)
         intent.putExtra(DetailMainActivity.EXTRA_TITLE, data.titleArticles)
@@ -141,23 +153,4 @@ class MainFragment : Fragment() {
         startActivity(intent)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

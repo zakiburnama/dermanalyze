@@ -22,6 +22,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import okhttp3.RequestBody
+
+import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class MapsFragment : Fragment() {
 
@@ -33,24 +40,7 @@ class MapsFragment : Fragment() {
 
 
     private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-
         mMap = googleMap
-//        val curLocation = LatLng(lat, lon)
-//        googleMap.addMarker(
-//            MarkerOptions()
-//                .position(curLocation)
-//                .title("Marker")
-//        )
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(curLocation))
     }
 
     override fun onCreateView(
@@ -61,7 +51,6 @@ class MapsFragment : Fragment() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         getMyLastLocation()
-
 
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
@@ -124,23 +113,61 @@ class MapsFragment : Fragment() {
     private fun showStartMarker(location: Location) {
         lat = location.latitude
         lon = location.longitude
-        Log.i("TAG", "####### $lat $lon")
+//        Log.i("TAG", "####### $lat $lon")
+
+        nearBy()
 
         val curLocation = LatLng(lat, lon)
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curLocation, 10f))
-
-        onMap()
     }
 
-    private fun onMap() {
-//        val curLocation = LatLng(lat, lon)
-//        mMap.addMarker(
-//            MarkerOptions()
-//                .position(curLocation)
-//                .title("Marker $lat")
-//        )
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(curLocation))
+    private fun nearBy() {
+        val radius= 5000
+        val type= "hospital"
+        val key= BuildConfig.KEY
+
+
+        val client = ApiConfig2().getApiService2().getLocationHospital("$lat,$lon", radius, type, key)
+        client.enqueue(object : Callback<com.example.dermanalyze_bangkit_capstone.Response> {
+            override fun onResponse(
+                call: Call<com.example.dermanalyze_bangkit_capstone.Response>,
+                response: Response<com.example.dermanalyze_bangkit_capstone.Response>
+            )
+            {
+//                    showLoading(false)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+//                    Log.i("TAG", "##### ${responseBody.results?.get(0)?.geometry?.location?.lat}")
+                    Log.i("TAG", "##### ${responseBody.results?.size}")
+
+                    if (responseBody.results?.size!! > 0) {
+                        for (i in responseBody.results) {
+                            val lat = i.geometry?.location?.lat
+                            val lon = i.geometry?.location?.lng
+                            val locationSource = LatLng(lat!!, lon!!)
+
+                            mMap.addMarker(
+                                MarkerOptions()
+                                    .position(locationSource)
+                                    .title(i.name)
+                                    .snippet(i.rating.toString())
+                            )
+
+                        }
+                    }
+
+                } else {
+                    Log.i("TAG", "##### SUKSES?")
+                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<com.example.dermanalyze_bangkit_capstone.Response>, t: Throwable) {
+//                    showLoading(false)
+                Log.i("TAG", "##### GAGAL ${t.message}")
+                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 

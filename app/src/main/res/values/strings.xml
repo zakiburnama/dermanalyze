@@ -97,6 +97,17 @@
         <item>Cancer 6</item>
         <item>Cancer 7</item>
     </string-array>
+
+    <string-array name="data_cancer_more">
+        <item>ISI Cancer 1</item>
+        <item>ISI Cancer 2</item>
+        <item>ISI Cancer 3</item>
+        <item>ISI Cancer 4</item>
+        <item>ISI Cancer 5</item>
+        <item>ISI Cancer 6</item>
+        <item>ISI Cancer 7</item>
+    </string-array>
+
     <integer-array name="data_photo_cancer">
         <item>@drawable/chad</item>
         <item>@drawable/chad</item>
