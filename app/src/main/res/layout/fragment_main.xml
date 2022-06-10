@@ -41,7 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
             android:layout_marginEnd="16dp"
+<<<<<<< HEAD
             android:text="TextView"
+=======
+            android:text="Budi"
+>>>>>>> 0ce790abf03261d91424f3fe9ad5ec4c76ead2b3
             android:textColor="?attr/colorOnPrimary"
             android:textAlignment="textEnd"
             android:textSize="18sp"

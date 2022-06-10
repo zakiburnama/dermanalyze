@@ -13,6 +13,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginStart="18dp"
         android:src="@drawable/chad"
+        app:civ_border_color="?attr/colorPrimary"
         android:elevation="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
