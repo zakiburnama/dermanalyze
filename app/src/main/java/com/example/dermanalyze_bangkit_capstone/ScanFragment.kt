@@ -121,17 +121,25 @@ class ScanFragment : Fragment() {
 //            showLoading(true)
             val file = reduceFileImage(getFile as File)
 //            val description = desc.toRequestBody("text/plain".toMediaType())
-            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+//            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val requestImageFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "image",
                 file.name,
                 requestImageFile
             )
 
+            Log.i("TAG", "##### multipart $tokenauth")
+            Log.i("TAG", "##### multipart $imageMultipart")
+
             val service = ApiConfig().getApiService().uploadImage(
                 tokenauth,
-                imageMultipart
+                imageMultipart,
             )
+//            val service = ApiConfig3().getApiService3().uploadImage(
+//                tokenauth,
+//                imageMultipart,
+//            )
             service.enqueue(object : Callback<PredictResponse> {
                 override fun onResponse(
                     call: Call<PredictResponse>,
@@ -150,6 +158,7 @@ class ScanFragment : Fragment() {
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
 
                         Log.i("TAG", "###### GAGAL response.body ${response.body()}")
+                        Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")
                         Log.i("TAG", "###### GAGAL response.message ${response.message()}")
                         Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
 //                        Log.i("TAG", "###### GAGAL $token")
@@ -172,7 +181,7 @@ class ScanFragment : Fragment() {
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        if (it.resultCode == ScanActivity.CAMERA_X_RESULT) {
+        if (it.resultCode == ScanFragment.CAMERA_X_RESULT) {
             val myFile = it.data?.getSerializableExtra("picture") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
 

@@ -17,17 +17,6 @@ interface ApiService2 {
         @Query("type") type: String,
         @Query("key") key: String,
     ): Call<Response>
-
-
-//    @GET("nearbysearch/json?keyword=cruise&radius=1500&location=-33.8670522%2C151.1957362&type=restaurant&key=AIzaSyAjvdFMaMA_LCSxPf4NjrTToej5VYd4sK8")
-//    fun getLocationHospital(): Call<Response>
-
-//    @GET("nearbysearch/json?&key=AIzaSyAjvdFMaMA_LCSxPf4NjrTToej5VYd4sK8")
-//    fun getLocationHospital(
-//        @Query("type") type: String,
-//        @Query("radius") radius: Int,
-//        @Query("location") location: String,
-//    ): Call<Response>
 }
 
 class ApiConfig2 {
@@ -38,8 +27,6 @@ class ApiConfig2 {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-//            .baseUrl("https://dermanalyze-api-dev.herokuapp.com/")
-//            .baseUrl("https://maps.googleapis.com/maps/api/place/nearbysearch/")
             .baseUrl("https://maps.googleapis.com/maps/api/place/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)

@@ -29,9 +29,9 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_camera"
-        android:name="com.example.dermanalyze_bangkit_capstone.ScanFragment"
+        android:name="com.example.dermanalyze_bangkit_capstone.ScanActivity"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_scan" />
 </navigation>

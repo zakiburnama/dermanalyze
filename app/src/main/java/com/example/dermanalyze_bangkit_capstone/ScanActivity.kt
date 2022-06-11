@@ -107,6 +107,7 @@ class ScanActivity : AppCompatActivity() {
         val loginPreference = LoginPreference(this)
         val token = loginPreference.getToken()
         val tokenauth = "Bearer $token"
+        val desc = "awdawdad"
 
         if (getFile != null) {
 //            showLoading(true)
@@ -119,6 +120,83 @@ class ScanActivity : AppCompatActivity() {
                 requestImageFile
             )
 
+//            val service = ApiConfig().getApiService().uploadImage(
+//                tokenauth,
+//                imageMultipart,
+//            )
+            val service = ApiConfig().getApiService().uploadImage(
+                tokenauth,
+                imageMultipart,
+            )
+            service.enqueue(object : Callback<PredictResponse> {
+                override fun onResponse(
+                    call: Call<PredictResponse>,
+                    response: Response<PredictResponse>
+                ) {
+//                    showLoading(false)
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+//                            val i = Intent(this@ScanActivity, MainActivity::class.java)
+//                            startActivity(i, ActivityOptionsCompat.makeSceneTransitionAnimation(this@ScanActivity).toBundle())
+//                            finishAfterTransition()
+                            Log.i("TAG", "###### SUKSES")
+                        }
+                    } else {
+//                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+
+                        Log.i("TAG", "###### GAGAL response.body ${response.body()}")
+                        Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")
+                        Log.i("TAG", "###### GAGAL response.message ${response.message()}")
+                        Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
+//                        Log.i("TAG", "###### GAGAL $token")
+                    }
+                }
+                override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
+//                    showLoading(false)
+                    Log.i("TAG", "###### GAGAL ${t}")
+//                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                }
+            })
+            /*
+            val service = ApiConfig3().getApiService3().uploadImage2(
+                desc,
+                imageMultipart,
+            )
+            service.enqueue(object : Callback<FileUploadResponse> {
+                override fun onResponse(
+                    call: Call<FileUploadResponse>,
+                    response: Response<FileUploadResponse>
+                ) {
+//                    showLoading(false)
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+//                            val i = Intent(this@ScanActivity, MainActivity::class.java)
+//                            startActivity(i, ActivityOptionsCompat.makeSceneTransitionAnimation(this@ScanActivity).toBundle())
+//                            finishAfterTransition()
+                            Log.i("TAG", "###### SUKSES")
+                            Log.i("TAG", "###### GAGAL response.body ${response.body()}")
+                        }
+                    } else {
+//                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+
+                        Log.i("TAG", "###### GAGAL response.body ${response.body()}")
+//                        Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")
+                        Log.i("TAG", "###### GAGAL response.message ${response.message()}")
+                        Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
+//                        Log.i("TAG", "###### GAGAL $token")
+                    }
+                }
+                override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
+//                    showLoading(false)
+                    Log.i("TAG", "###### GAGAL ${t}")
+//                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                }
+            })
+            */
+
+            /*
             val service = ApiConfig().getApiService().uploadImage(
                 tokenauth,
                 imageMultipart
@@ -150,6 +228,8 @@ class ScanActivity : AppCompatActivity() {
                     Toast.makeText(this@ScanActivity, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
             })
+
+             */
         } else {
             if (getFile == null)
                 Toast.makeText(this, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
