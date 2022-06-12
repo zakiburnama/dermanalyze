@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -27,21 +28,17 @@ class LoginActivity : AppCompatActivity() {
 
         setupView()
 
-
-        binding.btnLogin.setOnClickListener {
-            postLogin()
-        }
-
+        binding.btnLogin.setOnClickListener { postLogin() }
         binding.tvRegiter.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
-
-
     }
 
     private fun postLogin() {
+        showLoading(true)
+
         val email = binding.etEmail.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
 
@@ -51,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 call: Call<LoginResponse>,
                 response: Response<LoginResponse>
             ) {
-//                    showLoading(false)
+                showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
                     val token = responseBody.access_token.toString()
@@ -64,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                    showLoading(false)
+                showLoading(false)
                 Toast.makeText(this@LoginActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
@@ -92,6 +89,10 @@ class LoginActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }

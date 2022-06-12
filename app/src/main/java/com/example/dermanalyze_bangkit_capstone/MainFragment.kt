@@ -102,6 +102,7 @@ class MainFragment : Fragment() {
     }
 
     private fun getUsersData(token: String) {
+        showLoading(true)
         val client = ApiConfig().getApiService().getUsers(token)
         client.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
@@ -109,22 +110,19 @@ class MainFragment : Fragment() {
                 response: Response<RegisterResponse>
             )
             {
-//                    showLoading(false)
+                showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
                     val fn = responseBody.first_name
                     val ln = responseBody.last_name
 
                     binding.tvUsername.text = "$fn $ln"
-
-//                    setText(fn, ls, em)
-
                 } else {
                     Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-//                    showLoading(false)
+                showLoading(false)
                 Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
@@ -136,5 +134,9 @@ class MainFragment : Fragment() {
         intent.putExtra(DetailMainActivity.EXTRA_PHOTO, data.photo)
         intent.putExtra(DetailMainActivity.EXTRA_READ, data.readmorearticle)
         startActivity(intent)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

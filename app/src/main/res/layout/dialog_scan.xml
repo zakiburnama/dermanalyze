@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:elevation="5dp"
+    android:layout_marginVertical="16dp"
+    android:layout_marginHorizontal="8dp"
+    card_view:cardCornerRadius="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img_item_photo_scan"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/chad"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_titlearticle_scan"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_item_titlearticle_scan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_predict_red"
+            android:backgroundTint="?attr/colorPrimary"
+            android:paddingHorizontal="8dp"
+            android:textAlignment="center"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            card_view:layout_constraintEnd_toEndOf="@+id/img_item_photo_scan"
+            card_view:layout_constraintStart_toStartOf="@+id/img_item_photo_scan"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/title_articles" />
+
+        <TextView
+            android:id="@+id/tv_item_readmore_scan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_titlearticle_scan"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_item_titlearticle_scan"
+            card_view:layout_constraintTop_toBottomOf="@+id/img_item_photo_scan"
+            tools:text="@string/readmore" />
+
+        <Button
+            android:id="@+id/btn_cancel_scan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Close"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_readmore_scan"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_item_readmore_scan"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_readmore_scan"
+            card_view:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,13 +1,17 @@
 package com.example.dermanalyze_bangkit_capstone
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -50,6 +54,7 @@ class ProfileFragment : Fragment(){
         binding.btnUpdate.setOnClickListener{
             val intent = Intent(requireActivity(),UpdateActivity::class.java)
             startActivity(intent)
+
         }
 
         binding.tvLogout.setOnClickListener {
@@ -74,13 +79,14 @@ class ProfileFragment : Fragment(){
     }
 
     private fun getUsersData(token: String) {
+        showLoading(true)
         val client = ApiConfig().getApiService().getUsers(token)
         client.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
                 call: Call<RegisterResponse>,
                 response: Response<RegisterResponse>)
             {
-//                    showLoading(false)
+                showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
                     val fn = responseBody.first_name
@@ -94,20 +100,21 @@ class ProfileFragment : Fragment(){
                 }
             }
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-//                    showLoading(false)
+                showLoading(false)
                 Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     private fun logout(token: String) {
+        showLoading(true)
         val client = ApiConfig().getApiService().logout(token)
         client.enqueue(object : Callback<LogoutResponse> {
             override fun onResponse(
                 call: Call<LogoutResponse>,
                 response: Response<LogoutResponse>)
             {
-//                    showLoading(false)
+                showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
                     moveLogout()
@@ -116,6 +123,7 @@ class ProfileFragment : Fragment(){
                 }
             }
             override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
+                showLoading(false)
                 moveLogout()
             }
         })
@@ -135,5 +143,8 @@ class ProfileFragment : Fragment(){
         startActivity(intent)
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
 
 }

@@ -275,19 +275,13 @@
         android:id="@+id/menu4"
         motion:deriveConstraintsFrom="@+id/menu3" >
         <Constraint
-            android:id="@+id/menu4"
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toEndOf="@+id/menu3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/menu3"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginEnd="32dp"
-            motion:layout_constraintTop_toTopOf="@+id/menu3">
-            <CustomAttribute
-                motion:attributeName="crossfade"
-                motion:customFloatValue="1" />
-        </Constraint>
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/menu1"
             motion:layout_constraintEnd_toStartOf="@+id/menu2"

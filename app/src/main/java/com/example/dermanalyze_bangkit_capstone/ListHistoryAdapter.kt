@@ -27,6 +27,11 @@ class ListHistoryAdapter (private val listHistory: ArrayList<PredictResponse>) :
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (id, photo, predict, create, _, _, _) = listHistory[position]
 
+        if (predict == "unk")
+            holder.tvtitleArticles2.setBackgroundResource(R.drawable.bg_predict)
+         else
+            holder.tvtitleArticles2.setBackgroundResource(R.drawable.bg_predict_red)
+
         Picasso.get().load(photo).into(holder.imgPhoto2)
         holder.tvtitleArticles2.text = predict
         holder.tvreadmore2.text = create

@@ -31,7 +31,7 @@
             android:id="@+id/tv_item_titlearticle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_predict"
+            android:background="@color/teal_200"
             android:backgroundTint="?attr/colorPrimary"
             android:textAlignment="center"
             android:textColor="?attr/colorOnPrimary"

@@ -126,15 +126,6 @@
         app:layout_constraintTop_toBottomOf="@+id/titleMenu3"
         android:text="@string/desc_menu_3" />
 
-    <ImageView
-        android:id="@+id/logoMenu4"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:src="@drawable/intro3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/titleMenu4"
@@ -227,7 +218,7 @@
         android:layout_marginBottom="32dp"
         android:alpha="0"
         android:backgroundTint="@color/navi"
-        android:text="@string/login"
+        android:text="MULAI"
         app:layout_constraintBottom_toTopOf="@+id/menu2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

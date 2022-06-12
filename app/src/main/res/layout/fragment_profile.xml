@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/circularImageView"
@@ -39,16 +52,17 @@
         app:layout_constraintStart_toStartOf="@+id/tv_username_profile"
         app:layout_constraintTop_toBottomOf="@+id/tv_username_profile" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Edit Profiel"
-        android:textSize="12sp"
+        android:padding="8dp"
+        android:text="Edit Profile"
+        android:textColor="?attr/colorPrimary"
+        android:background="@drawable/bg_text"
         app:layout_constraintStart_toStartOf="@+id/tv_email_profiel"
         app:layout_constraintTop_toBottomOf="@+id/tv_email_profiel" />
-
 
     <LinearLayout
         android:layout_width="match_parent"

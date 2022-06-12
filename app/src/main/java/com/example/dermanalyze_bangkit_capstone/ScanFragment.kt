@@ -2,9 +2,12 @@ package com.example.dermanalyze_bangkit_capstone
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +15,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +28,7 @@ import com.example.dermanalyze_bangkit_capstone.databinding.FragmentScanBinding
 import com.example.dermanalyze_bangkit_capstone.utils.reduceFileImage
 import com.example.dermanalyze_bangkit_capstone.utils.rotateBitmap
 import com.example.dermanalyze_bangkit_capstone.utils.uriToFile
+import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -114,7 +122,7 @@ class ScanFragment : Fragment() {
         val tokenauth = "Bearer $token"
 
         if (getFile != null) {
-//            showLoading(true)
+            showLoading(true)
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
@@ -132,30 +140,39 @@ class ScanFragment : Fragment() {
                     call: Call<PredictResponse>,
                     response: Response<PredictResponse>
                 ) {
-//                    showLoading(false)
+                    showLoading(false)
                     if (response.isSuccessful) {
                         val responseBody = response.body()
                         if (responseBody != null) {
-                            val x = responseBody.pred_results
-                            val y = responseBody.photo_url
-                            val z = responseBody.created_at
-//                            val i = Intent(this@ScanActivity, MainActivity::class.java)
-//                            startActivity(i, ActivityOptionsCompat.makeSceneTransitionAnimation(this@ScanActivity).toBundle())
-//                            finishAfterTransition()
-                            Log.i("TAG", "###### SUKSES")
-                            Log.i("TAG", "###### response.body ${response.body()}")
+                            val result = responseBody.pred_results
+                            val photo = responseBody.photo_url
+                            val createdat = responseBody.created_at
+
+                            val dialog = Dialog(requireContext())
+                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialog.setContentView(R.layout.dialog_scan)
+
+                            val btnClose = dialog.findViewById<Button>(R.id.btn_cancel_scan)
+                            val imgAvatar = dialog.findViewById<ImageView>(R.id.img_item_photo_scan)
+                            val txtJudul = dialog.findViewById<TextView>(R.id.tv_item_titlearticle_scan)
+                            val txtContn = dialog.findViewById<TextView>(R.id.tv_item_readmore_scan)
+
+                            btnClose.setOnClickListener {
+                                dialog.dismiss()
+                            }
+                            Picasso.get().load(photo).into(imgAvatar)
+                            txtContn.text = createdat
+                            txtJudul.text = result
+
+                            dialog.show()
                         }
                     } else {
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
-
-                        Log.i("TAG", "###### GAGAL response.body ${response.body()}")
-                        Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")
-                        Log.i("TAG", "###### GAGAL response.message ${response.message()}")
-                        Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
                     }
                 }
                 override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
-//                    showLoading(false)
+                    showLoading(false)
                     Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -199,6 +216,6 @@ class ScanFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-//        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

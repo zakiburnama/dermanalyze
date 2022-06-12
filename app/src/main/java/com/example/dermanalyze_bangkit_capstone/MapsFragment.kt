@@ -113,20 +113,18 @@ class MapsFragment : Fragment() {
     private fun showStartMarker(location: Location) {
         lat = location.latitude
         lon = location.longitude
-//        Log.i("TAG", "####### $lat $lon")
 
         nearBy()
 
         val curLocation = LatLng(lat, lon)
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curLocation, 10f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curLocation, 15f))
     }
 
     private fun nearBy() {
         val radius= 5000
         val type= "hospital"
         val key= BuildConfig.KEY
-
 
         val client = ApiConfig2().getApiService2().getLocationHospital("$lat,$lon", radius, type, key)
         client.enqueue(object : Callback<com.example.dermanalyze_bangkit_capstone.Response> {
@@ -135,12 +133,8 @@ class MapsFragment : Fragment() {
                 response: Response<com.example.dermanalyze_bangkit_capstone.Response>
             )
             {
-//                    showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
-//                    Log.i("TAG", "##### ${responseBody.results?.get(0)?.geometry?.location?.lat}")
-                    Log.i("TAG", "##### ${responseBody.results?.size}")
-
                     if (responseBody.results?.size!! > 0) {
                         for (i in responseBody.results) {
                             val lat = i.geometry?.location?.lat
@@ -153,22 +147,16 @@ class MapsFragment : Fragment() {
                                     .title(i.name)
                                     .snippet(i.rating.toString())
                             )
-
                         }
                     }
 
                 } else {
-                    Log.i("TAG", "##### SUKSES?")
                     Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<com.example.dermanalyze_bangkit_capstone.Response>, t: Throwable) {
-//                    showLoading(false)
-                Log.i("TAG", "##### GAGAL ${t.message}")
                 Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
-
-
 }

@@ -34,14 +34,11 @@ class HistoryFragment : Fragment() {
 
         getUsersData(tokenauth)
 
-//        val xx = "https://dermanalyze-api-dev.herokuapp.com/static/images/02297417e6b71f6c7912.jpg"
-
-//        Picasso.get().load(xx).into(binding.imageView2)
-
         return view
     }
 
     private fun getUsersData(token: String) {
+        showLoading(true)
         val client = ApiConfig().getApiService().getHistory(token)
         client.enqueue(object : Callback<ArrayList<PredictResponse>> {
             override fun onResponse(
@@ -49,29 +46,16 @@ class HistoryFragment : Fragment() {
                 response: Response<ArrayList<PredictResponse>>
             )
             {
-//                    showLoading(false)
+                showLoading(false)
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
-                    Log.i("TAG", "##### ${responseBody}")
-                    Log.i("TAG", "##### SUKSES")
-
                     showRecyclerList(responseBody)
-
-//                    val x = responseBody[0].created_at
-//                    val y = responseBody[0].pred_results
-//                    val z = responseBody[0].photo_url
-
-
-//                    binding.textView5.text = y
-
-//                    Picasso.get().load(z).into(binding.imageView2)
-
                 } else {
                     Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<ArrayList<PredictResponse>>, t: Throwable) {
-//                    showLoading(false)
+                showLoading(false)
                 Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
@@ -81,12 +65,10 @@ class HistoryFragment : Fragment() {
         binding.rvHistory.layoutManager = LinearLayoutManager(context)
         val listHistoryAdapter = ListHistoryAdapter(data)
         binding.rvHistory.adapter = listHistoryAdapter
+    }
 
-//        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
-//            override fun onItemClicked(data: User) {
-//                moveActivityUser(data)
-//            }
-//        })
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }
