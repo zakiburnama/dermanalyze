@@ -146,7 +146,20 @@ class ScanFragment : Fragment() {
                         if (responseBody != null) {
                             val result = responseBody.pred_results
                             val photo = responseBody.photo_url
-                            val createdat = responseBody.created_at
+
+                            val arrayString = resources.getStringArray(R.array.data_cancer_more)
+                            val desc = when(result) {
+                                "akiec" -> arrayString[0]
+                                "bcc" -> arrayString[1]
+                                "bkl" -> arrayString[2]
+                                "df" -> arrayString[3]
+                                "mel" -> arrayString[4]
+                                "nv" -> arrayString[5]
+                                "vasc" -> arrayString[6]
+                                else -> {
+                                    "Cancer tidak terdeteksi"
+                                }
+                            }
 
                             val dialog = Dialog(requireContext())
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -162,7 +175,7 @@ class ScanFragment : Fragment() {
                                 dialog.dismiss()
                             }
                             Picasso.get().load(photo).into(imgAvatar)
-                            txtContn.text = createdat
+                            txtContn.text = desc
                             txtJudul.text = result
 
                             dialog.show()
