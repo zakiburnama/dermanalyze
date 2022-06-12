@@ -67,23 +67,19 @@ class HistoryFragment : Fragment() {
 //                    Picasso.get().load(z).into(binding.imageView2)
 
                 } else {
-                    Log.i("TAG", "##### SUKSES?")
                     Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<ArrayList<PredictResponse>>, t: Throwable) {
 //                    showLoading(false)
-                Log.i("TAG", "##### GAGAL")
                 Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     private fun showRecyclerList(data: ArrayList<PredictResponse>) {
-//        private lateinit var listUserAdapter : ListUserAdapter
         binding.rvHistory.layoutManager = LinearLayoutManager(context)
         val listHistoryAdapter = ListHistoryAdapter(data)
-//        listUserAdapter.setData(list)
         binding.rvHistory.adapter = listHistoryAdapter
 
 //        listUserAdapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {

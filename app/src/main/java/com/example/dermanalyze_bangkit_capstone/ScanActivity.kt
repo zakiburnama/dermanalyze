@@ -115,15 +115,10 @@ class ScanActivity : AppCompatActivity() {
 //            val description = desc.toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
+                "file",
                 file.name,
                 requestImageFile
             )
-
-//            val service = ApiConfig().getApiService().uploadImage(
-//                tokenauth,
-//                imageMultipart,
-//            )
             val service = ApiConfig().getApiService().uploadImage(
                 tokenauth,
                 imageMultipart,
@@ -143,7 +138,7 @@ class ScanActivity : AppCompatActivity() {
                             Log.i("TAG", "###### SUKSES")
                         }
                     } else {
-//                        Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ScanActivity, response.message(), Toast.LENGTH_SHORT).show()
 
                         Log.i("TAG", "###### GAGAL response.body ${response.body()}")
                         Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")

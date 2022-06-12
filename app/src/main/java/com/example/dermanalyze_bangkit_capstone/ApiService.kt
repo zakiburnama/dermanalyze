@@ -1,14 +1,11 @@
 package com.example.dermanalyze_bangkit_capstone
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.POST
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -85,15 +82,6 @@ data class Owner(
     @field:SerializedName("email") val email: String
 )
 
-//TEMP
-data class FileUploadResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-
-    @field:SerializedName("message")
-    val message: String
-)
-
 interface ApiService {
     @FormUrlEncoded
     @POST("login")
@@ -117,8 +105,6 @@ interface ApiService {
         @Body userData: UpdateUsers
     ): Call<RegisterResponse>
 
-//    @FormD
-//    @Headers("multipart/form-data; boundary=<calculated when request is sent>")
     @Multipart
     @POST("predict")
     fun uploadImage(
@@ -131,22 +117,10 @@ interface ApiService {
         @Header("Authorization") authorization: String,
     ): Call<ArrayList<PredictResponse>>
 
-//    @FormUrlEncoded
     @POST("logout")
     fun logout(
         @Header("Authorization") authorization: String
     ): Call<LogoutResponse>
-
-    //TEMP
-    @Multipart
-    @POST("stories/guest")
-    fun uploadImage2(
-//        @Header("Authorization") authorization: String,
-        @Part("description") description: String,
-        @Part file: MultipartBody.Part,
-//        @Part("lat") lat: Float,
-//        @Part("lon") lon: Float,
-    ): Call<FileUploadResponse>
 
 }
 
@@ -158,32 +132,8 @@ class ApiConfig {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-//            .baseUrl("https://dermanalyze-api-dev.herokuapp.com/")
             .baseUrl("http://35.219.67.156/")
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-        return retrofit.create(ApiService::class.java)
-    }
-}
-
-
-class ApiConfig3 {
-    fun getApiService3(): ApiService {
-        val loggingInterceptor =
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
-        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://dermanalyze-api-dev.herokuapp.com/")
-            .baseUrl("http://35.219.67.156/")
-//            .baseUrl("https://story-api.dicoding.dev/v1")
-//            .addConverterFactory(GsonConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
         return retrofit.create(ApiService::class.java)

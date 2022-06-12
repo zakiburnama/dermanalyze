@@ -30,7 +30,7 @@ class MyEditText: AppCompatEditText, View.OnTouchListener {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Name"
+//        hint = "Name"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
 
     }

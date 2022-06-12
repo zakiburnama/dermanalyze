@@ -27,12 +27,9 @@ class ListHistoryAdapter (private val listHistory: ArrayList<PredictResponse>) :
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (id, photo, predict, create, _, _, _) = listHistory[position]
 
-//        holder.imgPhoto2.setImageResource()
         Picasso.get().load(photo).into(holder.imgPhoto2)
         holder.tvtitleArticles2.text = predict
         holder.tvreadmore2.text = create
-
-        Log.i("TAG", "##### $id $predict")
     }
 
     override fun getItemCount(): Int = listHistory.size

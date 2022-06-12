@@ -109,10 +109,6 @@ class ScanFragment : Fragment() {
     }
 
     private fun uploadImage() {
-
-//        val descBlank = binding.etDescription.text.isBlank()
-//        val desc = binding.etDescription.text.toString()
-
         val loginPreference = LoginPreference(requireContext())
         val token = loginPreference.getToken()
         val tokenauth = "Bearer $token"
@@ -120,26 +116,17 @@ class ScanFragment : Fragment() {
         if (getFile != null) {
 //            showLoading(true)
             val file = reduceFileImage(getFile as File)
-//            val description = desc.toRequestBody("text/plain".toMediaType())
-//            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-            val requestImageFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "image",
+                "file",
                 file.name,
                 requestImageFile
             )
-
-            Log.i("TAG", "##### multipart $tokenauth")
-            Log.i("TAG", "##### multipart $imageMultipart")
 
             val service = ApiConfig().getApiService().uploadImage(
                 tokenauth,
                 imageMultipart,
             )
-//            val service = ApiConfig3().getApiService3().uploadImage(
-//                tokenauth,
-//                imageMultipart,
-//            )
             service.enqueue(object : Callback<PredictResponse> {
                 override fun onResponse(
                     call: Call<PredictResponse>,
@@ -149,10 +136,14 @@ class ScanFragment : Fragment() {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
                         if (responseBody != null) {
+                            val x = responseBody.pred_results
+                            val y = responseBody.photo_url
+                            val z = responseBody.created_at
 //                            val i = Intent(this@ScanActivity, MainActivity::class.java)
 //                            startActivity(i, ActivityOptionsCompat.makeSceneTransitionAnimation(this@ScanActivity).toBundle())
 //                            finishAfterTransition()
                             Log.i("TAG", "###### SUKSES")
+                            Log.i("TAG", "###### response.body ${response.body()}")
                         }
                     } else {
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
@@ -161,13 +152,11 @@ class ScanFragment : Fragment() {
                         Log.i("TAG", "###### GAGAL response.body ${response.body()?.detail}")
                         Log.i("TAG", "###### GAGAL response.message ${response.message()}")
                         Log.i("TAG", "###### GAGAL response.errorBody ${response.errorBody()}")
-//                        Log.i("TAG", "###### GAGAL $token")
                     }
                 }
                 override fun onFailure(call: Call<PredictResponse>, t: Throwable) {
 //                    showLoading(false)
-                    Log.i("TAG", "###### GAGAL ${t}")
-//                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
                 }
             })
         } else {
@@ -181,7 +170,7 @@ class ScanFragment : Fragment() {
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        if (it.resultCode == ScanFragment.CAMERA_X_RESULT) {
+        if (it.resultCode == CAMERA_X_RESULT) {
             val myFile = it.data?.getSerializableExtra("picture") as File
             val isBackCamera = it.data?.getBooleanExtra("isBackCamera", true) as Boolean
 

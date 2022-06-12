@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.dermanalyze_bangkit_capstone.databinding.FragmentProfileBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -51,8 +53,23 @@ class ProfileFragment : Fragment(){
         }
 
         binding.tvLogout.setOnClickListener {
-//            logout(tokenauth)
-            moveLogout()
+            logout(tokenauth)
+        }
+
+        binding.switchDarkmode.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+            if(isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+        binding.tvLanguage.setOnClickListener {
+            Toast.makeText(context, "Not aviable yet", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.tvAbout.setOnClickListener {
+            Toast.makeText(context, "Not aviable yet", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -96,12 +113,10 @@ class ProfileFragment : Fragment(){
                     moveLogout()
                 } else {
                     moveLogout()
-//                    Toast.makeText(context,response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
-//                    showLoading(false)
-                Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+                moveLogout()
             }
         })
     }
