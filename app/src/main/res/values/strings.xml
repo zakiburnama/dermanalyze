@@ -89,7 +89,7 @@
         <item>DF</item>
         <item>MEL</item>
         <item>NV</item>
-        <item>UNK</item>
+        <item>VASC</item>
     </string-array>
     <string-array name="readmore_typescancer">
         <item>Kanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal.
@@ -183,7 +183,16 @@
             \n - Radang kulit yang muncul secara tiba-tiba
             \n - Nyeri
             \n - Gatal</item>
-        <item>ISI Cancer 7</item>
+        <item>Vascular Lesions
+        \n Vascular Lesions adaah kumpulan pertumbuhan pembuluh darah idiopatik (penyebab yang belum diketahui), yang umum ditemukan pada bayi dan anak-anak. Mereka hadir saat lahir, tetapi mungkin tidak memiliki penampilan yang terlihat selama berminggu-minggu dan kadang-kadang bertahun-tahun.
+        \n Tanda lahir ini diklasifikasikan dalam dua kelompok, yaitu kanker dan tumor pembuluh darah. Tumor vascular adalah neoplasma, yang melibatkan proliferasi seluler pembuluh darah, sedagkan kanker kulit vaskular, tidak melibatkan proliferasi aktif pembuluh darah dan stabil sepanjang hidup seseorang.
+        \n Vascular lesions terbagi menjadi beberapa bagian, yaitu :
+        \n - Angiomas
+        \n - Angiokeratomas
+        \n - Pyogenic Granumolas
+        \n - Hemorrhage
+
+        \n Seringkali, tanda lahir vascular lesions ini timbul sendiri. Inilah salah satu alasan, mengapa tanda lahir vascular sangat penting untuk dievaluasi oleh dokter kulit anak.</item>
     </string-array>
 
     <integer-array name="data_photo_cancer">
