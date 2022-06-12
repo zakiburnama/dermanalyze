@@ -126,9 +126,26 @@
     </string-array>
 
     <string-array name="data_cancer_more">
-        <item>ISI Cancer 1</item>
-        <item>ISI Cancer 2</item>
-        <item>ISI Cancer 3</item>
+        <item>Actinic keratosis adalah kondisi kulit yang kasar, menebal, dan bersisik, akibat paparan sinar matahari dalam waktu yang lama. Actinic keratosis, atau disebut juga dengan solar keratosis, juga dapat terjadi akibat penggunaan alat tanning untuk menghitamkan kulit. Solar keratosis umumnya dialami oleh orang usia 40 tahun ke atas dan orang yang sering beraktivitas di bawah sinar matahari dalam waktu yang lama.
+        Actinic keratosis berkembang secara perlahan dan tidak menimbulkan gejala. Meski jarang terjadi, kondisi ini berpotensi menyebabkan kanker kulit.
+        \n Penyebab Actinic Keratosis (Solar Keratosis) Penyebab utama actinic keratosis adalah paparan sinar matahari atau ultraviolet secara berlebihan. Dengan kata lain, solar keratosis akan lebih banyak terjadi pada orang-orang yang sering beraktivitas di bawah sinar matahari langsung, serta orang yang senang menggunakan tanning bed atau alat penghitam kulit. Faktor risiko actinic keratosis Actinic keratosis dapat menyerang siapa pun. Meski begitu, seseorang lebih berisiko terkena kondisi tersebut jika:
+        \n - Berusia lebih dari 40 tahun
+        \n -Tinggal di tempat yang terpapar sinar matahari
+        \n -Memiliki jenis kulit sensitif
+        \n -Memiliki daya tahan tubuh lemah, misalnya karena menderita penyakit kanker, HIV/AIDS, atau menggunakan obat kemoterapi dan obat-obatan imunosupresan
+        </item>
+        <item>Karsinoma sel basal adalah kanker kulit yang menyerang sel basal. Kanker ini umumnya muncul di area kulit yang sering terkena sinar matahari, seperti wajah, kepala, atau leher. Sel basal adalah sel yang terletak di bagian paling bawah dari lapisan kulit terluar (epidermis). Sel ini berfungsi untuk memproduksi sel kulit baru dan menggantikan sel kulit lama yang mati melalui proses pengelupasan kulit. Pada karsinoma sel basal, produksi sel kulit menjadi tidak terkendali sehingga membentuk kanker.
+        \n Karsinoma sel basal merupakan jenis kanker kulit yang paling sering terjadi, yaitu sekitar 75% dari semua kasus kanker kulit. Kanker ini cenderung tumbuh dengan lambat dan tidak menimbulkan gejala dalam waktu yang lama. Karsinoma sel basal juga umumnya tidak menyebar ke organ lain (metastasis). Akan tetapi, jika tidak ditangani dengan tepat, karsinoma sel basal bisa menyebar ke organ dan jaringan tubuh yang sehat di sekitarnya.
+        \n Penyebab Karsinoma Sel Basal Karsinoma sel basal disebabkan oleh mutasi atau perubahan pada DNA sel basal di kulit. Mutasi DNA tersebut menyebabkan produksi sel menjadi tidak terkendali sehingga menumpuk di kulit dan membentuk sel kanker. Mutasi DNA pada sel basal dipicu oleh paparan sinar ultraviolet, baik akibat paparan sinar matahari langsung maupun dari prosedur untuk menggelapkan kulit (indoor tanning).
+        </item>
+        <item>Keratosis seboroik adalah benjolan seperti kutil yang tumbuh di permukaan kulit. Kondisi ini lebih sering terjadi pada orang dewasa, terutama orang lanjut usia, dan jumlahnya dapat bertambah seiring waktu. Keratosis seboroik dapat tumbuh di mana saja, kecuali di telapak tangan dan kaki, atau di lapisan mukosa mulut dan hidung. Bagian tubuh yang sering menjadi lokasi kemunculan keratosis seboroik adalah wajah, dada, bahu, punggung, dan lipatan kulit.
+        \n Benjolan keratosis seboroik tumbuh dengan lambat, tidak menular, dan jarang berkembang menjadi kanker. Kondisi ini umumnya tidak menimbulkan nyeri dan tidak memerlukan pengobatan khusus. Namun, penanganan oleh dokter bisa dilakukan jika kondisi ini dirasa mengganggu.
+        \n Penyebab dan Faktor Risiko Keratosis Seboroik
+        \n Keratosis seboroik terjadi ketika sel-sel di kulit tumbuh secara tidak normal. Belum diketahui secara pasti apa penyebab kondisi tersebut, tetapi diduga terkait dengan beberapa faktor berikut:
+        \n -Berusia di atas 40 tahun
+        \n -Sering terpapar sinar matahari
+        \n -Memiliki riwayat keratosis seboroik di dalam keluarga
+        \n -Sering mengalami gesekan pada kulit, seperti pada lipatan kulit bagian dalam</item>
         <item>ISI Cancer 4</item>
         <item>ISI Cancer 5</item>
         <item>ISI Cancer 6</item>

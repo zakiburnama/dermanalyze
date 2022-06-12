@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
