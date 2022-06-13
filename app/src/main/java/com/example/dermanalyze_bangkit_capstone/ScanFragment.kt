@@ -117,12 +117,13 @@ class ScanFragment : Fragment() {
     }
 
     private fun uploadImage() {
+        showLoading(true)
+        
         val loginPreference = LoginPreference(requireContext())
         val token = loginPreference.getToken()
         val tokenauth = "Bearer $token"
 
         if (getFile != null) {
-            showLoading(true)
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(

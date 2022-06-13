@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="@font/harbinger"
         android:gravity="center_horizontal"
         android:text="DERMANALYZE"
         android:textColor="@color/black"
@@ -83,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:text="@string/login"
+        android:fontFamily="@font/harbinger"
         app:layout_constraintBottom_toTopOf="@+id/tv_regiter"
         app:layout_constraintEnd_toEndOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="@+id/et_password" />
@@ -94,6 +95,7 @@
         android:layout_marginBottom="18dp"
         android:text="Belum punya akun?"
         android:textColor="@color/navi"
+        android:fontFamily="@font/harbinger"
         app:layout_constraintBottom_toTopOf="@+id/hiasanlogo2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

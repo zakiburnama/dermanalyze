@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_image_24" />
+        app:srcCompat="@drawable/ic_baseline_image_black_24" />
 
     <Button
         android:id="@+id/cameraXButton"
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_baseline_photo_camera_24"
         android:elevation="2dp"
+        android:fontFamily="@font/harbinger"
         android:scaleType="fitCenter"
         android:text="Camera"
         app:layout_constraintBottom_toTopOf="@+id/uploadButton"
@@ -33,8 +35,10 @@
         android:id="@+id/galleryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:drawableStart="@drawable/ic_baseline_image_24"
+        android:fontFamily="@font/harbinger"
         android:text="Galerry"
         app:layout_constraintBottom_toTopOf="@+id/uploadButton"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView" />
@@ -45,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="Scan"
+        android:fontFamily="@font/harbinger"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/galleryButton"
         app:layout_constraintStart_toStartOf="@+id/cameraXButton" />

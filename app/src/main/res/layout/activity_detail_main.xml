@@ -48,6 +48,7 @@
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
                 android:text="Text"
+                android:fontFamily="@font/harbinger"
                 android:textColor="?attr/colorOnPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:text="Text"
+                android:fontFamily="@font/harbinger"
                 android:textSize="16sp" />
         </LinearLayout>
 
