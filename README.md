@@ -1,10 +1,10 @@
 # Bangkit Capstone Team C22-PS184
 ## Dermanalyze
-This is the final project for Bangkit 2022, about Skin Cancer detection. As one of the requirements for graduation. The goal of this app is to detection the skin of the user, so that the user can know if they get skin cancer or not as soon as possible. Dermanalyze is an android app with the following features : capture the skin image,  with the AI (Image Processiong) that we build, the aplication can show detection skin result, show related information such as nearest skin hospital, and some article about skin cancer.
+This is the final project for Bangkit 2022, about Skin Cancer detection. As one of the requirements for graduation. The goal of this app is to detection the skin of the user, so that the user can know if they get skin cancer or not as soon as possible. Dermanalyze is an android app with the following features : capture the skin image,  with the AI (Image Processing) that we build, the application can show detection skin result, show related information such as nearest skin hospital, and some article about skin cancer.
 
 ## Build With
 
-This application build with a few techonology, which are :
+This application build with a few technologies, which are :
 - [Android Studio](https://developer.android.com/studio?hl=id&gclid=CjwKCAjwkYGVBhArEiwA4sZLuC3g18Aud6w4gsZ6imqi5lDyvZ3gZWfWA6Uw2tIfjnkZQ9vRdNG7FhoCVvQQAvD_BwE&gclsrc=aw.ds)
 - [Kotlin](https://kotlinlang.org/docs/typecasts.html#type-erasure-and-generic-type-checks)
 - [Google Maps Api](https://console.cloud.google.com/home/dashboard?project=seraphic-beacon-283014)
