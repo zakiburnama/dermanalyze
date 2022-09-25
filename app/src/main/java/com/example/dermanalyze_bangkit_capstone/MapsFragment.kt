@@ -49,9 +49,6 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        getMyLastLocation()
-
         return inflater.inflate(R.layout.fragment_maps, container, false)
     }
 
@@ -59,6 +56,9 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        getMyLastLocation()
     }
 
     private val requestPermissionLauncher =
