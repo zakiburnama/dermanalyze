@@ -2,6 +2,18 @@
 ## Dermanalyze
 This is the final project for Bangkit 2022, about Skin Cancer detection. As one of the requirements for graduation. The goal of this app is to detection the skin of the user, so that the user can know if they get skin cancer or not as soon as possible. Dermanalyze is an android app with the following features : capture the skin image,  with the AI (Image Processing) that we build, the application can show detection skin result, show related information such as nearest skin hospital, and some article about skin cancer.
 
+## 📸 Screenshots  
+
+| Splach | Login | Regis | Info |
+|------------|------------|--------------|--------------|
+| ![Home](screenshots/page1.jpg) | ![Shimmer](screenshots/page2.jpg) | ![Detail](screenshots/page3.jpg) | ![Favorite](screenshots/page4.jpg) |
+| Info | Info | Info | Home |
+| ![Home](screenshots/page5.jpg) | ![Shimmer](screenshots/page6.jpg) | ![Detail](screenshots/page7.jpg) | ![Favorite](screenshots/page8.jpg) |
+| Scan | Result | History | Hospital |
+| ![Home](screenshots/page11.jpg) | ![Shimmer](screenshots/page12.jpg) | ![Detail](screenshots/page13.jpg) | ![Favorite](screenshots/page10.jpg) |
+| Article | Profile | Setting |  |
+| ![Home](screenshots/page9.jpg) | ![Shimmer](screenshots/page14.jpg) | ![Detail](screenshots/page15.jpg) |  |
+
 ## Build With
 
 This application build with a few technologies, which are :
